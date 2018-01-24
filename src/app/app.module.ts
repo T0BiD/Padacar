@@ -11,6 +11,10 @@ import { RideComponent } from './ride/ride.component';
 import { RideDetailComponent } from './ride-detail/ride-detail.component';
 import { DriverDetailComponent } from './driver-detail/driver-detail.component';
 import { DataService } from './data.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule, MatInputModule, MatDialogModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 const routes: Routes = [
   { path: 'home', component: LandingPageComponent},
@@ -29,8 +33,10 @@ const routes: Routes = [
     DriverDetailComponent
   ],
   imports: [
-    BrowserModule, MaterialModule, RouterModule.forRoot(routes, {useHash:true})
+    BrowserModule, MaterialModule, RouterModule.forRoot(routes, {useHash:true}),FormsModule, ReactiveFormsModule, MatFormFieldModule,
+    MatInputModule, MatDialogModule, BrowserAnimationsModule
   ],
+  entryComponents: [LoginComponent],
   providers: [DataService],
   bootstrap: [AppComponent]
 })
