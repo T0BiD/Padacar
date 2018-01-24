@@ -1,0 +1,59 @@
+<div class=parallax align="left">
+  <div id="rectangle">
+    <form class="input">
+      <div class="textfield">
+        <br>
+        <h1>Neue Fahrt anlegen</h1>
+        <br>
+
+        <table>
+          <tr>
+            <td>
+              <label>Start:</label>
+            </td>
+            <td width="30px"></td>
+            <td>
+              <input class="textinput" type="text" name="startort" ngModel="startort" placeholder="z.B. Paderborn Hauptbahnhof" required size="30px">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Ziel:</label>
+            </td>
+            <td></td>
+            <td>
+              <input type="text" name="zielort" ngModel="zielort" placeholder="z.B. München" required>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Datum:</label>
+            </td>
+            <td></td>
+            <td>
+              <input type="date" name="datum" ngModel="datum" required>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Maximale Anzahl Mitfahrer:</label>
+            </td>
+            <td></td>
+            <td>
+              <input type="number" name="maxmitfahrer" ngModel="maxmitfahrer" required>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Gepäckmitnahme:</label>
+            </td>
+            <td></td>
+            <td>
+              <select name="maxmitfahrer" ngModel="maxmitfahrer" required></select>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </div>
+</div>
