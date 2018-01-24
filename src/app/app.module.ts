@@ -11,9 +11,10 @@ import { RideComponent } from './ride/ride.component';
 import { RideDetailComponent } from './ride-detail/ride-detail.component';
 import { DriverDetailComponent } from './driver-detail/driver-detail.component';
 import { DataService } from './data.service';
+import { DatePipe } from '@angular/common';
 
 const routes: Routes = [
-  { path: 'home', component: LandingPageComponent},
+  { path: 'home', component: RideDetailComponent},
   { path:'suche', component: SearchComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full'},  
 ];
@@ -31,7 +32,7 @@ const routes: Routes = [
   imports: [
     BrowserModule, MaterialModule, RouterModule.forRoot(routes, {useHash:true})
   ],
-  providers: [DataService],
+  providers: [DataService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
