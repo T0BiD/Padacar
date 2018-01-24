@@ -23,6 +23,7 @@ export class Person {
         this.geburtsdatum = geburtsdatum;
         this.geschlecht = geschlecht;
         this.auto = auto;
+        
     }
 
 
@@ -70,6 +71,20 @@ export class Fahrt {
     uhrzeit: string;
     preis: number;
     regelmaessig: string;
+
+    constructor(fahrer){
+        this.fahrer = fahrer;
+        this.maxmitfahrer = 4;
+        this.start = "a";
+        this.ziel = "b";
+        this.gepaeck = true;
+        this.datum = new Date();
+        this.uhrzeit = "15:14";
+        this.preis = 30;
+        this.regelmaessig ="wöchentlich"
+        this.mitfahrer = new Array<Person>();
+        
+    }
 
     addMitfahrer(mitfahrer: Person) {
         if (this.mitfahrer.length < this.maxmitfahrer) {

@@ -20,7 +20,7 @@ export class RideDetailComponent implements OnInit {
     this.fahrten = dataService.angeboteneFahrten;
     //need id via navParams
     this.id = 0;
-
+    
     this.fahrtAnzeigen();
   }
 
@@ -28,7 +28,8 @@ export class RideDetailComponent implements OnInit {
   }
 
   private fahrtAnzeigen(){
-    this.fahrt = this.fahrten[this.id];
+    //this.fahrt = this.fahrten[this.id];
+    this.fahrt = new Fahrt(this.dataService.users[0]);
   }
 
   anfrageSenden(){
