@@ -14,6 +14,7 @@ import { DataService } from './data.service';
 import { DatePipe } from '@angular/common';
 import { CreateRideComponent } from './create-ride/create-ride.component';
 
+
 const routes: Routes = [
   //Normal:   { path: 'home', component: LandingPageComponent },
 
