@@ -15,7 +15,7 @@ export class Person {
     //als mitfahrer
     mitgefahreneFahrten: Array<Fahrt>;
 
-    constructor(name, vorname, email, password, geburtsdatum,geschlecht,auto){
+    constructor(name, vorname, email, password, geburtsdatum,geschlecht,auto : Auto){
         this.name = name;
         this.vorname = vorname;
         this.email = email;
@@ -23,6 +23,7 @@ export class Person {
         this.geburtsdatum = geburtsdatum;
         this.geschlecht = geschlecht;
         this.auto = auto;
+        
     }
 
 
@@ -71,6 +72,20 @@ export class Fahrt {
     preis: number;
     regelmaessig: string;
 
+    constructor(fahrer){
+        this.fahrer = fahrer;
+        this.maxmitfahrer = 4;
+        this.start = "a";
+        this.ziel = "b";
+        this.gepaeck = true;
+        this.datum = new Date();
+        this.uhrzeit = "15:14";
+        this.preis = 30;
+        this.regelmaessig ="wöchentlich"
+        this.mitfahrer = new Array<Person>();
+        
+    }
+
     addMitfahrer(mitfahrer: Person) {
         if (this.mitfahrer.length < this.maxmitfahrer) {
             this.mitfahrer.push(mitfahrer);
@@ -116,4 +131,11 @@ export class Auto {
     marke: string;
     modell: string;
     farbe: string;
+
+    constructor(typ, marke,modell, farbe){
+        this.typ = typ;
+        this.marke = marke;
+        this.farbe = modell;
+        this.modell = farbe;
+    }
 }

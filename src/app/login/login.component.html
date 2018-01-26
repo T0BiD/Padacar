@@ -1,3 +1,22 @@
-<p>
-  login works!
-</p>
+<h1>Login</h1>
+<table>
+  <tr>
+    <td>
+      <mat-input-container>
+        <input matInput [(ngModel)]="email" placeholder="E-Mail">
+      </mat-input-container>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <mat-input-container>
+        <input matInput [(ngModel)]="password" placeholder="Password" type="password">
+      </mat-input-container>
+    </td>
+  </tr>
+</table>
+<button mat-raised-button (click)="login()">Login</button>
+
+<!--<li *ngIf="animal">
+    You chose: <i>{{animal}}</i>
+  </li>-->
