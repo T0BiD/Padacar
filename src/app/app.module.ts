@@ -15,10 +15,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
+import { CreateRideComponent } from './create-ride/create-ride.component';
+
 
 
 const routes: Routes = [
-  { path: 'home', component: RideDetailComponent},
+  //Normal:   { path: 'home', component: LandingPageComponent },
+
+  { path: 'home', component: CreateRideComponent },
   { path:'suche', component: SearchComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full'},  
 ];
@@ -31,7 +35,8 @@ const routes: Routes = [
     SearchComponent,
     RideComponent,
     RideDetailComponent,
-    DriverDetailComponent
+    DriverDetailComponent,
+    CreateRideComponent
   ],
   imports: [
     BrowserModule, MaterialModule, RouterModule.forRoot(routes, {useHash:true}),FormsModule, ReactiveFormsModule, MatFormFieldModule,
