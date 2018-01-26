@@ -1,0 +1,110 @@
+<div class=parallax align="left">
+    <div id="rectangle">
+      <form class="input">
+        <div class="textfield">
+          <br>
+          <h2>Noch kein Mitglied? <br>Dann melde dich kostenlos an!</h2>
+          
+
+          <table>
+            <tr>
+                <td><h4><u>Angaben zur Person</u></h4></td>
+            </tr>
+            <tr>
+              <td width="180px">
+                <label>Vorname</label>
+              </td>
+              <td>
+                <input class="textinput" type="text" name="vorname" [(ngModel)]="vorname" placeholder="Max" required size="30">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>Nachname:</label>
+              </td>
+              <td>
+                <input type="text" name="nachname" [(ngModel)]="nachname" placeholder="Mustermann" size="30" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>Email:</label>
+              </td>
+              <td>
+                <input type="email" name="email" [(ngModel)]="email" placeholder="maxmuster@muster.de" size="30" required>
+              </td>
+            </tr>
+            <tr>
+                <td><label>Passwort</label></td>
+                <td><input type="password" name="password" id="password" [(ngModel)]="password" required size="30px" /></td>
+            </tr>
+            <tr>
+                <td><label>Passwort wiederholen</label></td>
+                <td><input type="password" name="password2" id="password2" [(ngModel)]="password2" required size="30px" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Geburtstag:</label>
+                </td>
+                <td>
+                   <input type="date" name="gebdatum" [(ngModel)]="gebDatum" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Geschlecht:</label>
+                </td>
+                <td>
+                    <select [(ngModel)]="geschlecht" > 
+                        <option *ngFor="let g of geschlechter" [value]="g" required>{{g}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                    <td><h4><u>Angaben zum Fahrzeug</u></h4></td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Autotyp:</label>
+                </td>
+                <td>
+                    <input type="text" name="autotyp" [(ngModel)]="autotyp" placeholder="z.B. Kleinwagen" size="30px">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Automarke:</label>
+                </td>
+                <td>
+                    <input type="text" name="automarke" [(ngModel)]="automarke" placeholder="z.B. VW" size="30px">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Modell:</label>
+                </td>
+                <td>
+                    <input type="text" name="automodell" [(ngModel)]="automodell" placeholder="z.B. Polo 9n3" size="30px">
+                </td>
+            </tr>
+            <tr>
+                    <td>
+                        <label>Autofarbe:</label>
+                    </td>
+                    <td>
+                        <input type="text" name="autofarbe" [(ngModel)]="autofarbe" placeholder="z.B. silber" size="30px">
+                    </td>
+                </tr>
+
+
+          </table>
+        </div>
+        <div>
+            <button (click)="registrieren()">
+                Registrieren
+            </button>
+            <a (click)="abbrechen()">Abbrechen</a>
+        </div>
+      </form>
+    </div>
+  </div>

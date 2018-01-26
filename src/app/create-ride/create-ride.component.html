@@ -1,0 +1,95 @@
+<div class=parallax align="left">
+  <div id="rectangle">
+    <form class="input">
+      <div class="textfield">
+        <br>
+        <h1>Neue Fahrt anlegen</h1>
+        <br>
+        <br>
+        <table>
+          <tr>
+            <td>
+              <label>Start:</label>
+            </td>
+            <td width="30px"></td>
+            <td>
+              <input class="textinput" type="text" name="startort" ngModel="startort" placeholder="z.B. Paderborn Hauptbahnhof" required
+                size="30">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Ziel:</label>
+            </td>
+            <td></td>
+            <td>
+              <input type="text" name="zielort" ngModel="zielort" placeholder="z.B. München" size="30" required>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Datum:</label>
+            </td>
+            <td></td>
+            <td>
+              <input type="date" name="datum" ngModel="datum" required>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Uhrzeit:</label>
+            </td>
+            <td></td>
+            <td>
+              <input type="time" name="uhrzeit" ngModel="uhrzeit" required>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Maximale Anzahl Mitfahrer:</label>
+            </td>
+            <td></td>
+            <td>
+              <select>
+                <option ngValue="number" *ngFor="let number of maxmitfahrer">{{number}}</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Gepäckmitnahme:</label>
+            </td>
+            <td></td>
+            <td>
+              <select>
+                <option ngValue="text" *ngFor="let text of gepaeck">{{text == "true" ? 'Ja' : 'Nein'}}</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Regemläßig:</label>
+            </td>
+            <td></td>
+            <td>
+                <select>
+                    <option ngValue="text" *ngFor="let text of regelmaessig">{{text}}</option>
+                  </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Preis:</label>
+            </td>
+            <td></td>
+            <td>
+              <input type="number" name="preis" ngModel="preis" placeholder="20,00" required><label>  €</label>
+            </td>
+          </tr>
+        </table>
+        <br><br><br><br>
+        <button class="btn btn-primary" item-align="right" (click)="fahrtAnbieten()">Fahrt anlegen</button>
+      </div>
+    </form>
+  </div>
+</div>
