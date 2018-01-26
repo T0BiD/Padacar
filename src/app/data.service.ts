@@ -13,9 +13,10 @@ export class DataService {
 
   constructor() { 
     this.angemeldeterUser = null;
-  this.users = new Array<Person>();
+    this.users = new Array<Person>();
     this.angeboteneFahrten = new Array<Fahrt>();
     this.users.push(new Person("Maier","Hans","hansmaier@mail.com","1234",new Date(),"trans",new Auto("","","","")));
+
   }
 
   
