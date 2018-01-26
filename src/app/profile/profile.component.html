@@ -1,0 +1,104 @@
+<html>
+  <body>
+  
+      <div align="center" class="fahrerhead">      
+        <img src="/assets/fahrtsuchen_groß2.png" alt="Avatar" class="imagesmall">
+        <h2>{{user.vorname}} {{user.name}}</h2>
+    </div>
+  
+    <br>
+
+
+    <div class="parallax3" align="left"> 
+        <div id="rectangletop">
+    <div class="fahrtendetailstext" align="left">
+      <br>
+        <h3>Fahrtenhistorie:</h3>
+        <li>
+          <ul *ngFor="let item in user.gefahreneFahrten">
+            {{item.start}}->{{item.ziel}}
+          </ul>
+          
+        </li>
+
+        <p></p>
+    </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+    <div class="parallax2" >
+        <div id="rectanglemiddle">
+    <table style="width:100%">
+      <tr>
+        <td style="vertical-align:top">
+            <div class="fahrerdetailstext" align="left">
+              <br>
+              <br>
+              <br>
+              <br>
+                <h3>Fahrerdetails:</h3>
+                <p>Name: {{user.vorname}} {{user.name}}</p>
+                <p>Geschlecht: {{user.geschlecht}}</p>
+                <p>Geburtstag: {user.geburtsdatum | date}}</p>
+                <p>EMail: {{user.email}}</p>
+                <br>
+                <br>
+                <table>
+                  <tr>
+                    <td>
+                      <img src="/assets/thumb-up.png" alt="Avatar" class="ratingup">
+                      <b>{{user.likes}}</b>
+                    </td><td width="50px"></td><td>
+                      <img src="/assets/thumb-down.png" alt="Avatar" class="ratingdown">
+                      <b>{{user.dislikes}}</b>
+                    </td>
+                  </tr>
+                </table>
+            </div>                  
+        </td>
+        <td>
+          
+        </td>   
+      </tr>
+    </table>
+    </div>
+    </div>
+
+       <br>
+       <br>
+       <br>
+       <br>
+    
+     <div class="parallax1" align="left">
+        <div id="rectangledown">
+     <div class="fahrzeugdetailstext">
+      <h3>Fahrzeugdetails:</h3> 
+      <p>Automarke: {{user.auto.marke}}</p>
+      <p>Fahrzeugmodell: {{user.auto.modell}}</p>
+      <p>Fahrzeugtyp: {{user.auto.typ}}</p>
+      <p>Farbe: {{user.auto.farbe}}</p>
+    </div>
+     </div>
+    </div>
+
+
+
+
+    <hr color="blue" item-height="2px">
+    <table width="100%">
+    <tr>
+      <td align="right" style="height:60px">
+      <button type="button" class="btnbtn-primary" (click)="anfrageSenden()">Anfrage senden</button>
+      </td>
+    </tr>
+</table>
+
+</body>
+
+</html>
