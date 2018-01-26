@@ -17,7 +17,6 @@ import { RideComponent } from './ride/ride.component';
 import { RideDetailComponent } from './ride-detail/ride-detail.component';
 import { DriverDetailComponent } from './driver-detail/driver-detail.component';
 import { DataService } from './data.service';
-import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { RegistrationComponent } from './registration/registration.component';
 
