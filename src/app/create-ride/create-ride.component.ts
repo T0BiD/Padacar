@@ -30,8 +30,9 @@ export class CreateRideComponent implements OnInit {
   public regelmaessig: Array<String> = ["Nein", "wöchentlich", "täglich"];
 
   constructor(private router: Router, private dataService: DataService) { 
-    this.neueFahrt = new Fahrt;
+    
     this.person = this.dataService.angemeldeterUser;
+    this.neueFahrt = new Fahrt(this.person);
   }
 
   ngOnInit() {
