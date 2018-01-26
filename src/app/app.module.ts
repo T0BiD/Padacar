@@ -13,6 +13,7 @@ import { DriverDetailComponent } from './driver-detail/driver-detail.component';
 import { DataService } from './data.service';
 import { DatePipe } from '@angular/common';
 import { CreateRideComponent } from './create-ride/create-ride.component';
+import { FormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -35,7 +36,8 @@ const routes: Routes = [
     CreateRideComponent
   ],
   imports: [
-    BrowserModule, MaterialModule, RouterModule.forRoot(routes, {useHash:true})
+    BrowserModule, MaterialModule, RouterModule.forRoot(routes, {useHash:true}), FormsModule
+    
   ],
   providers: [DataService, DatePipe],
   bootstrap: [AppComponent]

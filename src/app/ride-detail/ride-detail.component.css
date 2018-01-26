@@ -123,16 +123,16 @@ body{
 
 #rectanglemiddle{
     width: 500px;
-    height: 500px;
-    background:darkblue;
+    height: 500px;   
+    background: rgba(0, 0, 139, 0.8);
     margin-left: 50px;
     margin-top: 50px;
 }
 
 #rectangletop{
     width: 500px;
-    height: 360px;
-    background:darkblue;
+    height: 360px;    
+    background: rgba(0, 0, 139, 0.8);
     margin-left: 50px;
     position: absolute;
     bottom: 0px;
@@ -141,7 +141,7 @@ body{
 #rectangledown{
     width: 500px;
     height: 300px;
-    background:darkblue;
+    background:rgba(0, 0, 139, 0.8);
     margin-left: 50px;
     margin-top: 50px;
 }
