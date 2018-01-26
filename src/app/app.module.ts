@@ -11,9 +11,11 @@ import { RideComponent } from './ride/ride.component';
 import { RideDetailComponent } from './ride-detail/ride-detail.component';
 import { DriverDetailComponent } from './driver-detail/driver-detail.component';
 import { DataService } from './data.service';
+import { RegistrationComponent } from './registration/registration.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
-  { path: 'home', component: LandingPageComponent},
+  { path: 'home', component: RegistrationComponent},
   { path:'suche', component: SearchComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full'},  
 ];
@@ -26,10 +28,11 @@ const routes: Routes = [
     SearchComponent,
     RideComponent,
     RideDetailComponent,
-    DriverDetailComponent
+    DriverDetailComponent,
+    RegistrationComponent
   ],
   imports: [
-    BrowserModule, MaterialModule, RouterModule.forRoot(routes, {useHash:true})
+    BrowserModule, MaterialModule, RouterModule.forRoot(routes, {useHash:true}), FormsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

@@ -15,7 +15,7 @@ export class Person {
     //als mitfahrer
     mitgefahreneFahrten: Array<Fahrt>;
 
-    constructor(name, vorname, email, password, geburtsdatum,geschlecht,auto){
+    constructor(name, vorname, email, password, geburtsdatum,geschlecht,auto : Auto){
         this.name = name;
         this.vorname = vorname;
         this.email = email;
@@ -116,4 +116,11 @@ export class Auto {
     marke: string;
     modell: string;
     farbe: string;
+
+    constructor(typ, marke,modell, farbe){
+        this.typ = typ;
+        this.marke = marke;
+        this.farbe = modell;
+        this.modell = farbe;
+    }
 }
