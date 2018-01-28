@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'createride', component: CreateRideComponent },
   { path: 'home', component: LandingPageComponent },
   { path:'suche', component: SearchComponent },
+  { path:'fahrt', component: RideDetailComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full'},  
 ];
 

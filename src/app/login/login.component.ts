@@ -14,8 +14,8 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
   constructor(private data: DataService, private router: Router, private dialogRef: MatDialogRef<LoginComponent>) { 
-    this.email = "a";
-    this.password = "b";
+    this.email = "admin";
+    this.password = "admin";
   }
 
   ngOnInit() {
