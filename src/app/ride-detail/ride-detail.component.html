@@ -1,18 +1,19 @@
 <html>
-  <body>
-  
-      <div align="center" class="fahrerhead">      
-        <img src="/assets/fahrtsuchen_groß2.png" alt="Avatar" class="imagesmall">
-        <h2>{{fahrt.fahrer.vorname}} {{fahrt.fahrer.name}}</h2>
-    </div>
-  
-    <br>
+
+<body>
+
+  <div align="center" class="fahrerhead">
+    <img src="/assets/fahrtsuchen_groß2.png" alt="Avatar" class="imagesmall">
+    <h2>{{fahrt.fahrer.vorname}} {{fahrt.fahrer.name}}</h2>
+  </div>
+
+  <br>
 
 
-    <div class="parallax3" align="left"> 
-        <div id="rectangletop">
-    <div class="fahrtendetailstext" align="left">
-      <br>
+  <div class="parallax3" align="left">
+    <div id="rectangletop">
+      <div class="fahrtendetailstext" align="left">
+        <br>
         <h3>Fahrtendetails:</h3>
         <p>Abfahrt: {{fahrt.start}} - Ziel: {{fahrt.ziel}}</p>
         <p>Datum: {{fahrt.datum | date:'dd.MM.yyyy'}}</p>
@@ -23,7 +24,7 @@
         <p>Aktuelle Anzahl Mitfahrer: {{fahrt.mitfahrer.length}}</p>
         <p>Regelmäßige Fahrt: {{fahrt.regelmaessig}}</p>
         <p></p>
-    </div>
+      </div>
     </div>
   </div>
 
@@ -33,72 +34,74 @@
   <br>
 
 
-    <div class="parallax2" >
-        <div id="rectanglemiddle">
-    <table style="width:100%">
-      <tr>
-        <td style="vertical-align:top">
+  <div class="parallax2">
+    <div id="rectanglemiddle">
+      <table style="width:100%">
+        <tr>
+          <td style="vertical-align:top">
             <div class="fahrerdetailstext" align="left">
               <br>
               <br>
               <br>
               <br>
-                <h3>Fahrerdetails:</h3>
-                <p>Name: {{fahrt.fahrer.vorname}} {{fahrt.fahrer.name}}</p>
-                <p>Geschlecht: {{fahrt.fahrer.geschlecht}}</p>
-                <p>Geburtstag: {{fahrt.fahrer.geburtsdatum | date}}</p>
-                <p>EMail: {{fahrt.fahrer.email}}</p>
-                <br>
-                <br>
-                <table>
-                  <tr>
-                    <td>
-                      <img src="/assets/thumb-up.png" alt="Avatar" class="ratingup">
-                      <b>{{fahrt.fahrer.likes}}</b>
-                    </td><td width="50px"></td><td>
-                      <img src="/assets/thumb-down.png" alt="Avatar" class="ratingdown">
-                      <b>{{fahrt.fahrer.dislikes}}</b>
-                    </td>
-                  </tr>
-                </table>
-            </div>                  
-        </td>
-        <td>
-          
-        </td>   
-      </tr>
-    </table>
+              <h3>Fahrerdetails:</h3>
+              <p>Name: {{fahrt.fahrer.vorname}} {{fahrt.fahrer.name}}</p>
+              <p>Geschlecht: {{fahrt.fahrer.geschlecht}}</p>
+              <p>Geburtstag: {{fahrt.fahrer.geburtsdatum | date}}</p>
+              <p>EMail: {{fahrt.fahrer.email}}</p>
+              <br>
+              <br>
+              <table>
+                <tr>
+                  <td>
+                    <img src="/assets/thumb-up.png" alt="Avatar" class="ratingup">
+                    <b>{{fahrt.fahrer.likes}}</b>
+                  </td>
+                  <td width="50px"></td>
+                  <td>
+                    <img src="/assets/thumb-down.png" alt="Avatar" class="ratingdown">
+                    <b>{{fahrt.fahrer.dislikes}}</b>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+          <td>
+
+          </td>
+        </tr>
+      </table>
     </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="parallax1" align="left">
+    <div id="rectangledown">
+      <div class="fahrzeugdetailstext">
+        <h3>Fahrzeugdetails:</h3>
+        <p>Automarke: {{fahrt.fahrer.auto.marke}}</p>
+        <p>Fahrzeugmodell: {{fahrt.fahrer.auto.modell}}</p>
+        <p>Fahrzeugtyp: {{fahrt.fahrer.auto.typ}}</p>
+        <p>Farbe: {{fahrt.fahrer.auto.farbe}}</p>
+      </div>
     </div>
-
-       <br>
-       <br>
-       <br>
-       <br>
-    
-     <div class="parallax1" align="left">
-        <div id="rectangledown">
-     <div class="fahrzeugdetailstext">
-      <h3>Fahrzeugdetails:</h3> 
-      <p>Automarke: {{fahrt.fahrer.auto.marke}}</p>
-      <p>Fahrzeugmodell: {{fahrt.fahrer.auto.modell}}</p>
-      <p>Fahrzeugtyp: {{fahrt.fahrer.auto.typ}}</p>
-      <p>Farbe: {{fahrt.fahrer.auto.farbe}}</p>
-    </div>
-     </div>
-    </div>
+  </div>
 
 
 
 
-    <hr color="blue" item-height="2px">
-    <table width="100%">
+  <hr color="blue" item-height="2px">
+  <table width="100%">
     <tr>
       <td align="right" style="height:60px">
-      <button type="button" class="btnbtn-primary" (click)="anfrageSenden()">Anfrage senden</button>
+        <button type="button" class="btnbtn-primary" (click)="anfrageSenden()">Anfrage senden</button>
       </td>
     </tr>
-</table>
+  </table>
 
 </body>
 

@@ -45,9 +45,10 @@ export class RideDetailComponent implements OnInit {
       if(darfmitfahren){
         this.fahrt.addMitfahrer(this.dataService.angemeldeterUser); 
       } else{
+        //hier vllt fehler ausgeben
         console.log("du bist doch schon am mitfahren amk")
       }
-      //hier vllt fehler ausgeben
+      
 
     } else {
       this.login();

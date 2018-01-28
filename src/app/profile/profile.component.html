@@ -10,34 +10,11 @@
   <br>
 
 
-  <div class="parallax3" align="left">
+  <div class="parallax3">
     <div id="rectangletop">
-      <div class="fahrtendetailstext" align="left">
-        <br>
-        <h3>Fahrtenhistorie:</h3>
-        <li>
-          <!-- <ul *ngFor="let item in user.gefahreneFahrten">
-            {{item.start}}->{{item.ziel}}
-          </ul> -->
-
-        </li>
-
-        <p></p>
-      </div>
-    </div>
-  </div>
-
-  <br>
-  <br>
-  <br>
-  <br>
-
-
-  <div class="parallax2">
-    <div id="rectanglemiddle">
       <table style="width:100%">
         <tr>
-          <td style="vertical-align:top">
+          <td>
             <div class="fahrerdetailstext" align="left">
               <br>
               <br>
@@ -68,11 +45,36 @@
           <td>
 
           </td>
-          
+
         </tr>
       </table>
     </div>
   </div>
+
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="parallax3" align="left">
+    <div id="rectanglemiddle">
+      <div class="fahrtendetailstext" align="left">
+        <br>
+        <h3>Fahrtenhistorie:</h3>
+        <ul >
+          
+          <li *ngFor="let fahrt of this.user.angeboteneFahrten">{{fahrt.datum}}: {{fahrt.start}} -> {{fahrt.ziel}}</li>
+        </ul>
+
+
+
+        <p></p>
+      </div>
+    </div>
+  </div>
+
 
   <br>
   <br>
@@ -98,7 +100,7 @@
   <table width="100%">
     <tr>
       <td align="right" style="height:60px">
-        <button type="button" class="btnbtn-primary" (click)="anfrageSenden()">Anfrage senden</button>
+
       </td>
     </tr>
   </table>

@@ -23,6 +23,8 @@ export class Person {
         this.geburtsdatum = geburtsdatum;
         this.geschlecht = geschlecht;
         this.auto = auto;
+        this.dislikes = 0;
+        this.likes = 0;
 
         //Hier die gespeicherten fahrten laden statt leeres array erstellen, nur für testzwecke
         this.angeboteneFahrten = new Array<Fahrt>();
@@ -44,11 +46,14 @@ export class Person {
     }
     bieteFahrtAn(fahrt: Fahrt) {
         this.angeboteneFahrten.push(fahrt);
+
     }
     
     updateFahrten() {
+        console.log("update fahrten");
         let toRemove: Array<Fahrt> = new Array<Fahrt>();
         this.angeboteneFahrten.forEach(fahrt => {
+            console.log(fahrt.datum + " " + new Date() + " " +(fahrt.datum < new Date()));
             if (fahrt.datum < new Date()) {
                 this.gefahreneFahrten.push(fahrt);
                 toRemove.push(fahrt);

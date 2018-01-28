@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../classes';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,8 +12,20 @@ export class ProfileComponent implements OnInit {
   user : Person;
 
 
-  constructor(user : Person) { 
-    this.user = user;
+  constructor(private dataService : DataService) { 
+    if(this.dataService.angemeldeterUser){
+      this.user = this.dataService.angemeldeterUser;
+      console.log("pre update:");
+      console.table(this.user.angeboteneFahrten);
+      this.user.updateFahrten();
+      console.log("angeboten:");
+      console.table(this.user.angeboteneFahrten);
+      console.log("gefahren:");
+      console.table(this.user.gefahreneFahrten);
+     
+    } 
+    
+    
     
   }
 
