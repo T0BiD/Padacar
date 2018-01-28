@@ -20,6 +20,7 @@ export class DataService {
   }
 
   
+  
   updateAngeboteneFahrten(){
     let newAngFahrt = new Array<Fahrt>();
     this.users.forEach(user => {

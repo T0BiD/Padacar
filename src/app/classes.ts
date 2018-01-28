@@ -23,6 +23,11 @@ export class Person {
         this.geburtsdatum = geburtsdatum;
         this.geschlecht = geschlecht;
         this.auto = auto;
+
+        //Hier die gespeicherten fahrten laden statt leeres array erstellen, nur für testzwecke
+        this.angeboteneFahrten = new Array<Fahrt>();
+        this.gefahreneFahrten = new Array<Fahrt>();
+        this.mitgefahreneFahrten = new Array<Fahrt>();
         
     }
 
@@ -85,6 +90,7 @@ export class Fahrt {
         this.mitfahrer = new Array<Person>();
         
     }
+
 
     addMitfahrer(mitfahrer: Person) {
         if (this.mitfahrer.length < this.maxmitfahrer) {
