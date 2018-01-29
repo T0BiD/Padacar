@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -9,7 +8,7 @@ import { DataService } from '../data.service';
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(private router:Router,private data: DataService) { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
@@ -19,9 +18,8 @@ export class LandingPageComponent implements OnInit {
     this.router.navigate(['/suche']);
   }
 
-  loadandsave(){
-    this.data.save();
-    this.data.load();
+  anbieten(){
+    console.log("create ride"); //link zur anbietenseite muss noch hinzugefügt werden
+    this.router.navigate(['/createride']);
   }
-
 }

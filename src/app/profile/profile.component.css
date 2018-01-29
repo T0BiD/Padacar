@@ -39,6 +39,18 @@ body{
     color: white;
 }
 
+.dynamicKasten{
+    
+        width: 500px;
+        height: auto;   
+        background: rgba(0, 0, 139, 0.8);
+        margin-left: 50px;
+        position: absolute;
+        bottom: 0px;
+    
+
+}
+
 .fahrerdetails{
     float: right;
 }

@@ -13,24 +13,17 @@ export class DataService {
 
   constructor() {
     this.angemeldeterUser = null;
-  this.users = new Array<Person>();
+    this.users = new Array<Person>();
     this.angeboteneFahrten = new Array<Fahrt>();
+
     this.users.push(new Person("Maier","Hans","hansmaier@mail.com","1234",new Date(),"trans",new Auto()));
     this.users.push(new Person("ads","Hans","ads","1234",new Date(),"trans",new Auto()));
   
 
     let f = new Fahrt(
-      this.users[0],
-      2,
-      "Paderborn", "Berlin",
-        true,
-      new Date('2018-02-17T14:30:00'),
-      "14:30",
-      30,
-      "Jeden Mittwoch");
+      this.users[0]);
       this.angeboteneFahrten.push(f);
   }
-
 
   updateAngeboteneFahrten(){
     let newAngFahrt = new Array<Fahrt>();
