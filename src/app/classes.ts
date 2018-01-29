@@ -39,7 +39,7 @@ export class Person {
     bieteFahrtAn(fahrt: Fahrt) {
         this.angeboteneFahrten.push(fahrt);
     }
-    
+
     updateFahrten() {
         let toRemove: Array<Fahrt> = new Array<Fahrt>();
         this.angeboteneFahrten.forEach(fahrt => {
@@ -70,6 +70,19 @@ export class Fahrt {
     uhrzeit: string;
     preis: number;
     regelmaessig: string;
+
+    constructor(fahrer: Person, maxmitfahrer: number, start: string, ziel: string,
+      gepaeck: boolean, datum: Date, uhrzeit: string, preis: number, regelmaessig: string){
+        this.fahrer = fahrer;
+        this.maxmitfahrer = maxmitfahrer;
+        this.start = start;
+        this.ziel = ziel;
+        this.gepaeck = gepaeck;
+        this.datum = datum;
+        this.uhrzeit = uhrzeit;
+        this.preis = preis;
+        this.regelmaessig = regelmaessig;
+      }
 
     addMitfahrer(mitfahrer: Person) {
         if (this.mitfahrer.length < this.maxmitfahrer) {
@@ -104,7 +117,7 @@ export class Fahrt {
                 mitfahrer.mitgefahreneFahrten.push(this);
                 return true;
             }
-             
+
         }
         return false;
     }

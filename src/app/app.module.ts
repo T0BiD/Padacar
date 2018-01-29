@@ -15,12 +15,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 
 const routes: Routes = [
-  { path: 'home', component: RideDetailComponent},
+  { path: 'home', component: LandingPageComponent},
   { path:'suche', component: SearchComponent },
-  { path: '**', redirectTo: '/home', pathMatch: 'full'},  
+  { path: '**', redirectTo: '/home', pathMatch: 'full'},
 ];
 
 @NgModule({
@@ -35,7 +36,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule, MaterialModule, RouterModule.forRoot(routes, {useHash:true}),FormsModule, ReactiveFormsModule, MatFormFieldModule,
-    MatInputModule, MatDialogModule, BrowserAnimationsModule
+    MatInputModule, MatDialogModule, BrowserAnimationsModule, OwlDateTimeModule,
+         OwlNativeDateTimeModule
   ],
 
   entryComponents: [LoginComponent],
