@@ -11,17 +11,20 @@ export class DataService {
   angemeldeterUser : Person;
 
 
-  constructor() { 
+  constructor() {
     this.angemeldeterUser = null;
     this.users = new Array<Person>();
     this.angeboteneFahrten = new Array<Fahrt>();
-    this.users.push(new Person("Maier","Hans","hansmaier@mail.com","1234",new Date(),"trans",new Auto("","","","")));
-    this.users.push(new Person("admin","admin","admin","admin",new Date(),"admin",new Auto("","","","")));
 
+    this.users.push(new Person("Maier","Hans","hansmaier@mail.com","1234",new Date(),"trans",new Auto()));
+    this.users.push(new Person("ads","Hans","ads","1234",new Date(),"trans",new Auto()));
+  
+
+    let f = new Fahrt(
+      this.users[0]);
+      this.angeboteneFahrten.push(f);
   }
 
-  
-  
   updateAngeboteneFahrten(){
     let newAngFahrt = new Array<Fahrt>();
     this.users.forEach(user => {
@@ -44,8 +47,6 @@ export class DataService {
     this.users = JSON.parse(localStorage.getItem("users"));
     console.table(this.users);
   }
-  
+
 
 }
-
-

@@ -48,7 +48,7 @@ export class Person {
         this.angeboteneFahrten.push(fahrt);
 
     }
-    
+
     updateFahrten() {
         console.log("update fahrten");
         let toRemove: Array<Fahrt> = new Array<Fahrt>();
@@ -81,6 +81,7 @@ export class Fahrt {
     uhrzeit: string;
     preis: number;
     regelmaessig: string;
+
 
     constructor(fahrer){
         this.fahrer = fahrer;
@@ -130,7 +131,7 @@ export class Fahrt {
                 mitfahrer.mitgefahreneFahrten.push(this);
                 return true;
             }
-             
+
         }
         return false;
     }
@@ -143,6 +144,7 @@ export class Auto {
     modell: string;
     farbe: string;
 
+
     constructor(typ, marke,modell, farbe){
         this.typ = typ;
         this.marke = marke;
@@ -150,3 +152,4 @@ export class Auto {
         this.modell = farbe;
     }
 }
+

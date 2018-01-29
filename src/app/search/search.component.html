@@ -1,3 +1,85 @@
-<p>
-  search works!
-</p>
+<div>
+  <table>
+    <tr>
+      <td>
+        <mat-form-field >
+        <input matInput placeholder="Startort" [(ngModel)]="startort" required>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+   <mat-select placeholder="Gepäck" [(ngModel)]="gepaeck" name="food">
+     <mat-option [value]="gepaeck">
+      -
+     </mat-option>
+     <mat-option [value]="gepaeck">
+      nein
+     </mat-option>
+     <mat-option [value]="gepaeck">
+      ja
+     </mat-option>
+   </mat-select>
+ </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field >
+        <input matInput placeholder="Zielort" [(ngModel)]="zielort" required>
+        </mat-form-field>
+      </td>
+      <td>
+
+      </td>
+    </tr>
+  </table>
+
+
+
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker3" placeholder="Datum" [value]="date.value">
+    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+    <mat-datepicker #picker3></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" placeholder="Zeit" >
+    <!-- <input [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4"> -->
+    <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
+</mat-form-field>
+</div>
+
+<button mat-raised-button color="primary" (click)="onSearch()">Suche</button>
+<hr />
+<div *ngIf="isSearch">
+  <div *ngFor="let f of fahrten">
+    <mat-card class="example-card">
+  <mat-card-header>
+     <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{f.fahrer.vorname}} {{f.fahrer.name}}</mat-card-title>
+    <mat-card-subtitle>{{f.start}} - {{f.ziel}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <table>
+      <tr>
+        <td class="fahrtDiv">
+          {{f.fahrer.geschlecht}}<br /><br />
+          <mat-icon>thumb_up</mat-icon> 3<br /><br />
+          <mat-icon>thumb_down</mat-icon> 1<br />
+        </td>
+        <td class="fahrtDiv">
+          Von: {{f.start}}<br /><br />
+          Nach: {{f.ziel}}<br /><br />
+          Preis: {{f.preis}}€
+        </td>
+        <td class="fahrtDivEnde">
+          Uhrzeit: {{f.uhrzeit}}<br /><br />
+          Datum: {{f.datum | date:'dd.MM.yyy'}}
+        </td>
+      </tr>
+    </table>
+ </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>

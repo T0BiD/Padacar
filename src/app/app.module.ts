@@ -31,6 +31,7 @@ const routes: Routes = [
   { path:'suche', component: SearchComponent },
   { path:'fahrt', component: RideDetailComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full'},  
+
 ];
 
 @NgModule({
@@ -48,7 +49,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule, MaterialModule, RouterModule.forRoot(routes, {useHash:true}),FormsModule, ReactiveFormsModule, MatFormFieldModule,
-    MatInputModule, MatDialogModule, BrowserAnimationsModule
+    MatInputModule, MatDialogModule, BrowserAnimationsModule, OwlDateTimeModule,
+         OwlNativeDateTimeModule
   ],
 
   entryComponents: [LoginComponent],
