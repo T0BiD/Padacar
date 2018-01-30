@@ -64,8 +64,11 @@ export class CreateRideComponent implements OnInit {
       neueFahrt.mitfahrer = new Array<Person>();
       neueFahrt.requestedMitfahrer = new Array<Person>();
       this.neueFahrt =  neueFahrt;
+      console.log(this.neueFahrt);
       this.person.bieteFahrtAn(neueFahrt);
+      this.person.updateFahrten();
       this.dataService.updateAngeboteneFahrten();
+      this.dataService.save();
       console.info(this.person.angeboteneFahrten);
       this.router.navigate(['/fahrt/'+neueFahrt.id]);
     } else {

@@ -45,6 +45,10 @@ export class DataService {
     p3.bieteFahrtAn(f3);
     this.users.push(p3);
     this.updateAngeboteneFahrten();
+
+
+    this.load();
+    
   
   }
 
@@ -66,12 +70,17 @@ export class DataService {
 
   save(){
     console.log("start save");
-    localStorage.setItem("users",JSON.stringify(this.users));
+    //localStorage.setItem("users",JSON.stringify(this.users));
     console.log("gesaved");
   }
   load(){
     console.log("start load");
-    this.users = JSON.parse(localStorage.getItem("users"));
+    let loadusers = JSON.parse(localStorage.getItem("users"));
+
+    if(loadusers){
+      this.users = loadusers;
+    }
+
     console.table(this.users);
   }
 

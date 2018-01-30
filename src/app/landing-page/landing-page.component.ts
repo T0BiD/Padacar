@@ -39,6 +39,7 @@ export class LandingPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.router.navigate(['/createride']);
       console.log('The dialog was closed');
     });
   }

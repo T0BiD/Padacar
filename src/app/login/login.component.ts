@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
         console.log(this.email, this.password);
       }
     });
-    console.log("flasch")
     return false;
     
   }

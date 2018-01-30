@@ -55,9 +55,10 @@ export class Person {
     updateFahrten() {
         console.log("update fahrten");
         let toRemove: Array<Fahrt> = new Array<Fahrt>();
+        console.table(this.angeboteneFahrten);
         this.angeboteneFahrten.forEach(fahrt => {
-            console.log(fahrt.datum + "<" + new Date() + " " +(fahrt.datum < new Date()));
-            if (fahrt.datum.getTime() < new Date().getTime()){
+            console.log(fahrt.datum.valueOf() + "<" + new Date().valueOf() + " " +(fahrt.datum.valueOf() < new Date().valueOf()));
+            if (fahrt.datum.valueOf() < new Date().valueOf()){
                 this.gefahreneFahrten.push(fahrt);
                 toRemove.push(fahrt);
             }
@@ -66,6 +67,7 @@ export class Person {
         toRemove.forEach(fahrt => {
             this.angeboteneFahrten.splice(toRemove.indexOf(fahrt));
         });
+        
     }
 
 
