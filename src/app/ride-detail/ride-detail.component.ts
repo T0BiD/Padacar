@@ -29,31 +29,28 @@ export class RideDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  private fahrtAnzeigen(){
+  private fahrtAnzeigen() {
+    console.table(this.dataService.angeboteneFahrten);
+    this.dataService.angeboteneFahrten.forEach(f => {
+      if(f.id == this.id){
+        this.fahrt = f;
+      }
+    });
 
-    let i = 0;
-    for(let f of this.dataService.angeboteneFahrten){
-    if(f.id == this.id){
-      this.fahrt = this.dataService.angeboteneFahrten[i];
-      console.log(this.fahrt);
-    }
-    i++;
-  }
-  
   }
 
-  anfrageSenden(){
-    if(this.dataService.angemeldeterUser!=null){
+  anfrageSenden() {
+    if (this.dataService.angemeldeterUser != null) {
       let darfmitfahren = true;
       this.fahrt.mitfahrer.forEach(mitfahrer => {
-        if(mitfahrer==this.dataService.angemeldeterUser){
+        if (mitfahrer == this.dataService.angemeldeterUser) {
           darfmitfahren = false;
         }
       });
 
-      if(darfmitfahren){
+      if (darfmitfahren) {
         this.fahrt.addMitfahrer(this.dataService.angemeldeterUser);
-      } else{
+      } else {
         //hier vllt fehler ausgeben
         console.log("du bist doch schon am mitfahren amk")
       }

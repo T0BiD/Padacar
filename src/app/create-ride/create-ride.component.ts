@@ -3,6 +3,8 @@ import { Fahrt, Person } from '../classes';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { Time } from '@angular/common';
+import { LoginComponent } from '../login/login.component';
+import { MatDialog } from '@angular/material';
 
 
 @Component({
@@ -12,82 +14,100 @@ import { Time } from '@angular/common';
 })
 export class CreateRideComponent implements OnInit {
 
-  private neueFahrt: Fahrt;
+  private neueFahrt : Fahrt;
   private person: Person;
 
-  public mitfahrer: number= 1;
+  public mitfahrer: number = 1;
   public gepaeckstueck = "false";
   public regel = "Nein";
 
   public startort: string = "";
   public zielort: string = "";
   public datum: Date = new Date();
-  public uhrzeit: string="";
+  public uhrzeit: string = "";
   public preis: number = null;
 
   public maxmitfahrer: Array<number> = [1, 2, 3, 4, 5, 6];
   public gepaeck: Array<String> = ["false", "true"];
   public regelmaessig: Array<String> = ["Nein", "wöchentlich", "täglich"];
 
-  constructor(private router: Router, private dataService: DataService) {
+  constructor(private router: Router, private dataService: DataService, private dialog : MatDialog) {
 
   }
 
   ngOnInit() {
   }
 
-  private fahrtAnbieten(){
+  private fahrtAnbieten() {
 
-    this.person = this.dataService.angemeldeterUser;
-    this.neueFahrt = new Fahrt(this.person);
 
-    if(this.dataService.angemeldeterUser != null){
-      this.neueFahrt.fahrer = this.dataService.angemeldeterUser;
+
+    if (this.dataService.angemeldeterUser != null) {
+      let neueFahrt = new Fahrt(this.dataService.angemeldeterUser);
+      neueFahrt.fahrer = this.dataService.angemeldeterUser;
+      this.person = this.dataService.angemeldeterUser;
+      neueFahrt = new Fahrt(this.person);
+      neueFahrt.id = this.dataService.angeboteneFahrten.length++;
+      neueFahrt.start = this.startort;
+      neueFahrt.ziel = this.zielort;
+      neueFahrt.datum = this.datum;
+      neueFahrt.uhrzeit = this.uhrzeit;
+      neueFahrt.preis = this.preis;
+      neueFahrt.maxmitfahrer = this.mitfahrer;
+      if (this.gepaeckstueck == "true") {
+        neueFahrt.gepaeck = true;
+      }
+      else {
+        neueFahrt.gepaeck = false;
+      }
+      neueFahrt.regelmaessig = this.regel;
+      neueFahrt.mitfahrer = new Array<Person>();
+      neueFahrt.requestedMitfahrer = new Array<Person>();
+      this.neueFahrt =  neueFahrt;
+      this.person.bieteFahrtAn(neueFahrt);
+      this.dataService.updateAngeboteneFahrten();
+      console.info(this.person.angeboteneFahrten);
+      this.router.navigate(['/fahrt/'+neueFahrt.id]);
+    } else {
+      console.log("keiner angemeldet");
+      this.login();
     }
-    this.neueFahrt.id = this.dataService.angeboteneFahrten.length++;
-    this.neueFahrt.start = this.startort;
-    this.neueFahrt.ziel = this.zielort;
-    this.neueFahrt.datum = this.datum;
-    this.neueFahrt.uhrzeit = this.uhrzeit;
-    this.neueFahrt.preis = this.preis;
-    this.neueFahrt.maxmitfahrer = this.mitfahrer;
-    if(this.gepaeckstueck == "true"){
-      this.neueFahrt.gepaeck = true;
-    }
-    else{
-      this.neueFahrt.gepaeck = false;
-    }
-    this.neueFahrt.regelmaessig = this.regel;
-    this.neueFahrt.mitfahrer = new Array<Person>();
-    this.neueFahrt.requestedMitfahrer = new Array<Person>();
+
+    
+
     //this.zusätzlicheFahrtenErstellen();
-
-    console.info(this.dataService.angemeldeterUser);
-    //Fahrt erstellen
-    this.person.bieteFahrtAn(this.neueFahrt);
-
-    console.info(this.person.angeboteneFahrten);
 
     //Umleiten auf das eigene Profil
     //this.router.navigate(["app/landing-page"]);
   }
 
+  login(): void {
+    let dialogRef = this.dialog.open(LoginComponent, {
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.fahrtAnbieten();
+    });
+  }
+
   //Methode um den "regelmäßig" Parameter auszulesen und ggf. weitere fahreten zu erstellen
-  private zusätzlicheFahrtenErstellen(){
-    if(this.neueFahrt.regelmaessig == "wöchentlich"){
-      for(var i:number = 0; i<=52; i++){
+  private zusätzlicheFahrtenErstellen() {
+    if (this.neueFahrt.regelmaessig == "wöchentlich") {
+      for (var i: number = 0; i <= 52; i++) {
         this.neueFahrt.datum.setDate(this.neueFahrt.datum.getDate() + parseInt("7"));
         this.person.bieteFahrtAn(this.neueFahrt);
         console.log("Datum:" + this.neueFahrt.datum);
       }
     }
-    else if(this.neueFahrt.regelmaessig == "täglich"){
-      for(var i:number = 0; i<=365; i++){
+    else if (this.neueFahrt.regelmaessig == "täglich") {
+      for (var i: number = 0; i <= 365; i++) {
         this.neueFahrt.datum.setDate(this.neueFahrt.datum.getDate() + parseInt("1"));
         console.log("Datum:" + this.neueFahrt.datum);
       }
     }
-    else{
+    else {
       console.info("Keine regelmäßigen Fahrten erstellt");
     }
   }
