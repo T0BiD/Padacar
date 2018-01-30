@@ -5,6 +5,7 @@ export class Person {
     email: string;
     password: string;
     geburtsdatum: Date;
+    alter: number;
     geschlecht: string;
     auto: Auto;
     likes: number;
@@ -27,7 +28,7 @@ export class Person {
         this.auto = auto;
         this.dislikes = 0;
         this.likes = 0;
-
+        this.alter = ((new Date().valueOf() - new Date(geburtsdatum)).valueOf())/31536000000;
         //Hier die gespeicherten fahrten laden statt leeres array erstellen, nur für testzwecke
         this.angeboteneFahrten = new Array<Fahrt>();
         this.gefahreneFahrten = new Array<Fahrt>();
