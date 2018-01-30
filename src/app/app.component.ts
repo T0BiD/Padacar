@@ -25,12 +25,20 @@ export class AppComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      //this.animal = result;
     });
   }
 
   gotoProfile(){
     let index = this.data.angemeldeterUser.id;
     this.router.navigate(['/profile/'+index]);
+  }
+
+  logout(){
+    this.data.angemeldeterUser = null;
+    this.router.navigate(['/home/']);
+  }
+
+  home(){
+    this.router.navigate(['/home/']);
   }
 }

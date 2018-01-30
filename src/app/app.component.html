@@ -9,6 +9,9 @@
     <button *ngIf="data.angemeldeterUser" (click)="gotoProfile()" class="loginbutton">
         Profil
     </button>
+    <button *ngIf="data.angemeldeterUser" (click)="logout()" class="loginbutton">
+        Logout
+    </button>
 </mat-toolbar>
 <hr size="3" color="#2949FF">
 <router-outlet></router-outlet>
