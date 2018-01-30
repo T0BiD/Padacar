@@ -1,12 +1,14 @@
-
 <mat-toolbar>
-  <button class="homebutton" (click)="home()">
-      <img src="/assets/logo2.png" height="50" width="60">
-  </button>  
-  <span class="spacer"></span>
-  <button (click)="login()" class="loginbutton">
-      Login
-    </button >  
+    <button class="homebutton" (click)="home()">
+        <img src="/assets/logo2.png" height="50" width="60">
+    </button>
+    <span class="spacer"></span>
+    <button *ngIf="!data.angemeldeterUser" (click)="login()" class="loginbutton">
+        Login
+    </button>
+    <button *ngIf="data.angemeldeterUser" (click)="gotoProfile()" class="loginbutton">
+        Profil
+    </button>
 </mat-toolbar>
 <hr size="3" color="#2949FF">
 <router-outlet></router-outlet>

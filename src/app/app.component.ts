@@ -3,6 +3,7 @@ import { DataService } from './data.service';
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { LoginComponent } from './login/login.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   title = 'app';
   password: string;
   name: string;
-  constructor(private data: DataService,  public dialog: MatDialog ){
+  constructor(private data: DataService,  public dialog: MatDialog , private router : Router){
     
   }
 
@@ -26,5 +27,10 @@ export class AppComponent {
       console.log('The dialog was closed');
       //this.animal = result;
     });
+  }
+
+  gotoProfile(){
+    let index = this.data.angemeldeterUser.id;
+    this.router.navigate(['/profile/'+index]);
   }
 }
