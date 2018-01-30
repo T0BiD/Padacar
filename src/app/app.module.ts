@@ -28,9 +28,9 @@ const routes: Routes = [
   //Normal:   { path: 'home', component: LandingPageComponent },
   { path: 'createride', component: CreateRideComponent },
   { path: 'home', component: LandingPageComponent },
-  { path: 'profile/:id', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent },
   { path:'suche', component: SearchComponent },
-  { path:'fahrt/:id', component: RideDetailComponent },
+  { path:'fahrt', component: RideDetailComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full'},
 
 ];

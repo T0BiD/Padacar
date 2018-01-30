@@ -1,85 +1,137 @@
-<div>
-  <table>
-    <tr>
-      <td>
-        <mat-form-field >
-        <input matInput placeholder="Startort" [(ngModel)]="startort" required>
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field>
-   <mat-select placeholder="Gepäck" [(ngModel)]="gepaeck" name="food">
-     <mat-option [value]="gepaeck">
-      -
-     </mat-option>
-     <mat-option [value]="gepaeck">
-      nein
-     </mat-option>
-     <mat-option [value]="gepaeck">
-      ja
-     </mat-option>
-   </mat-select>
- </mat-form-field>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <mat-form-field >
-        <input matInput placeholder="Zielort" [(ngModel)]="zielort" required>
-        </mat-form-field>
-      </td>
-      <td>
+<div class="parallax2">
+  <div id="rectangle">
 
-      </td>
-    </tr>
-  </table>
-
-
-
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker3" placeholder="Datum" [value]="date.value">
-    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-    <mat-datepicker #picker3></mat-datepicker>
-  </mat-form-field>
-
-  <mat-form-field>
-    <input matInput [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" placeholder="Zeit" [(ngModel)]="time" >
-    <!-- <input [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4"> -->
-    <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
-</mat-form-field>
-</div>
-
-<button mat-raised-button color="primary" (click)="onSearch()">Suche</button>
-<hr />
-<div *ngIf="isSearch">
-  <div *ngFor="let f of fahrten; let i = index">
-    <mat-card class="example-card" (click)="onDrive(i)">
-  <mat-card-header>
-     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{f.fahrer.vorname}} {{f.fahrer.name}}</mat-card-title>
-    <mat-card-subtitle>{{f.start}} - {{f.ziel}}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
     <table>
       <tr>
-        <td class="fahrtDiv">
-          {{f.fahrer.geschlecht}}<br /><br />
-          <mat-icon>thumb_up</mat-icon> 3<br /><br />
-          <mat-icon>thumb_down</mat-icon> 1<br />
+        <td>
+          <label>Start:</label>
         </td>
-        <td class="fahrtDiv">
-          Von: {{f.start}}<br /><br />
-          Nach: {{f.ziel}}<br /><br />
-          Preis: {{f.preis}}€
+        <td width="30px"></td>
+        <td>
+          <input class="textinput" type="text" name="startort" [(ngModel)]="startort" placeholder="z.B. Paderborn Hauptbahnhof" required
+            size="30">
         </td>
-        <td class="fahrtDivEnde">
-          Uhrzeit: {{f.uhrzeit}}<br /><br />
-          Datum: {{f.datum | date:'dd.MM.yyy'}}
+      </tr>
+      <tr>
+        <td>
+          <label>Ziel:</label>
+        </td>
+        <td></td>
+        <td>
+          <input type="text" name="zielort" [(ngModel)]="zielort" placeholder="z.B. München" size="30" required>
+        </td>
+      </tr>
+      <br />
+      <tr>
+        <td>
+          <label>Datum:</label>
+        </td>
+        <td></td>
+        <td>
+          <input type="date" name="datum" [(ngModel)]="datum" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Uhrzeit:</label>
+        </td>
+        <td></td>
+        <td>
+          <input type="time" name="uhrzeit" [(ngModel)]="uhrzeit" required>
+        </td>
+      </tr>
+      <br />
+      <tr>
+        <td>
+          <label>Geschlecht des Fahrers</label>
+        </td>
+        <td></td>
+        <td>
+          <select [(ngModel)]="geschlecht" >
+              <option *ngFor="let g of geschlechter" [value]="g" required>{{g}}</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Gepäckmitnahme:</label>
+        </td>
+        <td></td>
+        <td>
+          <select [(ngModel)]="gepaeckstueck" name="gepaeckstueck">
+            <option *ngFor="let text of gepaeck" value= {{text}}>{{text == "true" ? 'Ja' : 'Nein'}}</option>
+          </select>
+        </td>
+      </tr>
+      <br />
+      <tr>
+        <td>
+          <label>Regemläßig:</label>
+        </td>
+        <td></td>
+        <td>
+            <select [(ngModel)]="regel" name="regel">
+                <option *ngFor="let text of regelmaessig" value= {{text}}>{{text}}</option>
+              </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label>Preis:</label>
+        </td>
+        <td></td>
+        <td>
+          <input type="number" name="preis" [(ngModel)]="preis" placeholder="20,00" required><label>  €</label>
         </td>
       </tr>
     </table>
- </mat-card-content>
 
-    </mat-card>
+  <button mat-raised-button color="primary" (click)="onSearch()">Suche</button>
   </div>
+</div>
+
+
+<br />
+<br />
+
+<br />
+<br />
+<div  class="parallax1" *ngIf="isSearch">
+  <div >
+    <div *ngFor="let f of fahrten; let i = index">
+      <mat-card class="example-card" (click)="onDrive(i)">
+    <mat-card-header>
+       <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{f.fahrer.vorname}} {{f.fahrer.name}}</mat-card-title>
+      <mat-card-subtitle>{{f.start}} - {{f.ziel}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <table>
+        <tr>
+          <td class="fahrtDiv">
+            {{f.fahrer.geschlecht}}<br /><br />
+            {{f.fahrer.geburtsdatum-date}}
+          </td>
+          <td class="fahrtDiv">
+            <mat-icon>thumb_up</mat-icon> {{f.fahrer.likes}}<br /><br />
+            <mat-icon>thumb_down</mat-icon> {{f.fahrer.dislikes}}<br />
+          </td>
+          <td class="fahrtDiv">
+            Von: {{f.start}}<br /><br />
+            Nach: {{f.ziel}}<br /><br />
+            Preis: {{f.preis}}€
+          </td>
+          <td class="fahrtDivEnde">
+            Uhrzeit: {{f.uhrzeit}}<br /><br />
+            Datum: {{f.datum | date:'dd.MM.yyy'}}
+          </td>
+        </tr>
+      </table>
+   </mat-card-content>
+
+      </mat-card>
+      <br />
+    </div>
+  </div>
+
 </div>
