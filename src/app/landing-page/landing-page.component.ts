@@ -19,7 +19,7 @@ export class LandingPageComponent implements OnInit {
   }
 
   anbieten(){
-    console.log("create ride"); //link zur anbietenseite muss noch hinzugefügt werden
-    this.router.navigate(['/createride']);
+    console.log("suche"); //link zur anbietenseite muss noch hinzugefügt werden
+    this.router.navigate(['/suche']);
   }
 }
