@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
   { path: 'profile', component: ProfileComponent },
   { path:'suche', component: SearchComponent },
-  { path:'fahrt', component: RideDetailComponent },
+  { path:'fahrt/:id', component: RideDetailComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full'},
 
 ];
