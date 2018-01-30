@@ -36,13 +36,8 @@ export class SearchComponent implements OnInit {
  fahrten: Array<Fahrt> = this.data.angeboteneFahrten;
 
   constructor(private data: DataService, private router: Router) {
-    console.log(this.fahrten);
-    this.fahrten[0].fahrer.like();
-    this.fahrten[0].fahrer.like();
-    this.fahrten[0].fahrer.like();
-    this.fahrten[0].fahrer.dislike();
-    console.log(this.fahrten[0].fahrer.geburtsdatum);
-    console.log(new Date());
+
+
    }
 
   ngOnInit() {
@@ -54,22 +49,13 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch(){
-    console.log(this.gepaeck);
-    console.log(this.startort);
-    console.log(this.zielort);
-    let zeit = "dsaf";
-    console.log(this.time);
-    console.log(zeit);
 
-    // this.time = zeit.substring(16, 21);
-    // console.log(this.time.substring(16, 21));
-
-    this.isSearch = true;
     let alleFahrten = this.data.angeboteneFahrten;
     for(let f of alleFahrten){
-      // if(f.start == )
-    }
+      console.log(f);
 
+    }
+this.isSearch = true;
   }
 
 }
