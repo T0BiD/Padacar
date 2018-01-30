@@ -55,8 +55,8 @@ export class Person {
         console.log("update fahrten");
         let toRemove: Array<Fahrt> = new Array<Fahrt>();
         this.angeboteneFahrten.forEach(fahrt => {
-            console.log(fahrt.datum + " " + new Date() + " " +(fahrt.datum < new Date()));
-            if (fahrt.datum.getTime < new Date().getTime){
+            console.log(fahrt.datum + "<" + new Date() + " " +(fahrt.datum < new Date()));
+            if (fahrt.datum.getTime() < new Date().getTime()){
                 this.gefahreneFahrten.push(fahrt);
                 toRemove.push(fahrt);
             }
