@@ -25,11 +25,11 @@ export class CreateRideComponent implements OnInit {
   public uhrzeit: string="";
   public preis: number = null;
 
-  public maxmitfahrer: Array<number> = [1, 2, 3, 4, 5, 6]; 
-  public gepaeck: Array<String> = ["false", "true"]; 
+  public maxmitfahrer: Array<number> = [1, 2, 3, 4, 5, 6];
+  public gepaeck: Array<String> = ["false", "true"];
   public regelmaessig: Array<String> = ["Nein", "wöchentlich", "täglich"];
 
-  constructor(private router: Router, private dataService: DataService) { 
+  constructor(private router: Router, private dataService: DataService) {
 
   }
 
@@ -44,6 +44,7 @@ export class CreateRideComponent implements OnInit {
     if(this.dataService.angemeldeterUser != null){
       this.neueFahrt.fahrer = this.dataService.angemeldeterUser;
     }
+    this.neueFahrt.id = this.dataService.angeboteneFahrten.length++;
     this.neueFahrt.start = this.startort;
     this.neueFahrt.ziel = this.zielort;
     this.neueFahrt.datum = this.datum;

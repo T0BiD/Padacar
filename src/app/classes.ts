@@ -30,7 +30,7 @@ export class Person {
         this.angeboteneFahrten = new Array<Fahrt>();
         this.gefahreneFahrten = new Array<Fahrt>();
         this.mitgefahreneFahrten = new Array<Fahrt>();
-        
+
     }
 
 
@@ -69,6 +69,7 @@ export class Person {
 }
 
 export class Fahrt {
+    id: number;
     fahrer: Person;
     //die die mitfahren wollen
     requestedMitfahrer: Array<Person>;
@@ -84,6 +85,7 @@ export class Fahrt {
 
 
     constructor(fahrer){
+      this.id = 0;
         this.fahrer = fahrer;
         this.maxmitfahrer = 4;
         this.start = "a";
@@ -94,7 +96,7 @@ export class Fahrt {
         this.preis = 30;
         this.regelmaessig ="wöchentlich"
         this.mitfahrer = new Array<Person>();
-        
+
     }
 
 
@@ -152,4 +154,3 @@ export class Auto {
         this.modell = farbe;
     }
 }
-
