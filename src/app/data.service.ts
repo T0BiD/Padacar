@@ -16,9 +16,16 @@ export class DataService {
     this.users = new Array<Person>();
     this.angeboteneFahrten = new Array<Fahrt>();
 
-    this.users.push(new Person("Maier","Hans","hansmaier@mail.com","1234",new Date(),"trans",new Auto("","","","")));
-    this.users.push(new Person("ads","Hans","ads","1234",new Date(),"trans",new Auto("","","","")));
-
+    let p1 = new Person("Maier","Hans","hansmaier@mail.com","1234",new Date(),"trans",new Auto("","","",""));
+    p1.id = 0;
+    this.users.push(p1);
+    let p2 = new Person("ads","Hans","ads","1234",new Date(),"trans",new Auto("","","",""));
+    p2.id = 1;
+    this.users.push(p2);
+    let p3 = new Person("admin","admin","admin","admin",new Date(),"admin",new Auto("","","",""));
+    p3.id = 2;
+    this.users.push(p3);
+  
 
     let f = new Fahrt(
       this.users[0]);

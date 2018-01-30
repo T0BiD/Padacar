@@ -1,4 +1,5 @@
 export class Person {
+    id : number;
     name: string;
     vorname: string;
     email: string;
@@ -16,6 +17,7 @@ export class Person {
     mitgefahreneFahrten: Array<Fahrt>;
 
     constructor(name, vorname, email, password, geburtsdatum,geschlecht,auto : Auto){
+        this.id = 0;
         this.name = name;
         this.vorname = vorname;
         this.email = email;

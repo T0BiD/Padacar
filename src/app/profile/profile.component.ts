@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Person } from '../classes';
 import { DataService } from '../data.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-profile',
@@ -9,10 +11,11 @@ import { DataService } from '../data.service';
 })
 export class ProfileComponent implements OnInit {
 
+  id : number;
   user : Person;
 
 
-  constructor(private dataService : DataService) { 
+  constructor(private dataService : DataService, private route : ActivatedRoute) { 
     if(this.dataService.angemeldeterUser){
       this.user = this.dataService.angemeldeterUser;
       console.log("pre update:");
@@ -30,6 +33,14 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.id = Number(this.route.snapshot.paramMap.get("id"));
+    this.dataService.users.forEach(user => {
+      if(user.id == this.id){
+        this.user = user;
+      }
+    });
+    console.log(this.user);
   }
 
 }
