@@ -12,14 +12,24 @@ import { Auto, Person, Fahrt } from '../classes';
 })
 export class SearchComponent implements OnInit {
 
-  date = new FormControl(new Date());
- serializedDate = new FormControl((new Date()).toISOString());
 
- gepaeck: string = "nein";
- startort: string;
- zielort: string;
- time: string;
+ private neueFahrt: Fahrt;
+ private person: Person;
 
+ public mitfahrer: number= 1;
+ public gepaeckstueck = "false";
+ public regel = "Nein";
+
+ public startort: string = "";
+ public zielort: string = "";
+ public datum: Date = new Date();
+ public uhrzeit: string="";
+ public preis: number = null;
+
+ public geschlechter: Array<String> = ['männlich', 'weiblich', 'agender', 'bigender', 'demigender', 'Enby', 'genderfluid', 'Ilyagender', 'Sonstige'];
+ public maxmitfahrer: Array<number> = [1, 2, 3, 4, 5, 6];
+ public gepaeck: Array<String> = ["false", "true"];
+ public regelmaessig: Array<String> = ["Nein", "wöchentlich", "täglich"];
 
  isSearch: boolean = false;
 
@@ -27,6 +37,12 @@ export class SearchComponent implements OnInit {
 
   constructor(private data: DataService, private router: Router) {
     console.log(this.fahrten);
+    this.fahrten[0].fahrer.like();
+    this.fahrten[0].fahrer.like();
+    this.fahrten[0].fahrer.like();
+    this.fahrten[0].fahrer.dislike();
+    console.log(this.fahrten[0].fahrer.geburtsdatum);
+    console.log(new Date());
    }
 
   ngOnInit() {
