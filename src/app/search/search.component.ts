@@ -33,7 +33,7 @@ export class SearchComponent implements OnInit {
 
  isSearch: boolean = false;
 
- fahrten: Array<Fahrt> = this.data.angeboteneFahrten;
+ fahrten: Array<Fahrt> = [];
 
   constructor(private data: DataService, private router: Router) {
 
@@ -50,11 +50,21 @@ export class SearchComponent implements OnInit {
 
   onSearch(){
 
+this.fahrten = [];
     let alleFahrten = this.data.angeboteneFahrten;
     for(let f of alleFahrten){
-      console.log(f);
+      console.log(this.datum);
+      console.log(f.datum);
+
+console.log(new Date(this.datum));
+
+      if( (f.start == this.startort || f.ziel == this.zielort) && f.datum >= new Date(this.datum)){
+        this.fahrten.push(f);
+      }
+
 
     }
+    console.log(this.fahrten);
 this.isSearch = true;
   }
 
