@@ -16,7 +16,7 @@ export class DataService {
     this.users = new Array<Person>();
     this.angeboteneFahrten = new Array<Fahrt>();
 
-    let p1 = new Person("Maier","Hans","hansmaier@mail.com","1234",new Date(),"trans",new Auto("Kombi","VW","Passat","Grün"));
+    let p1 = new Person("Maier","Hans","hansmaier@mail.com","1234",new Date("01.01.1990"),"trans",new Auto("Kombi","VW","Passat","Grün"));
     p1.id = 0;
     p1.likes = 4; p1.dislike();
     let f1 = new Fahrt(p1);
@@ -26,7 +26,7 @@ export class DataService {
     this.users.push(p1);
     this.updateAngeboteneFahrten();
     
-    let p2 = new Person("Hans","Peter","peter@mail.com","1234",new Date(),"weiblich",new Auto("Kleinwagen","Mini","Cooper S","Rosa"));
+    let p2 = new Person("Hans","Peter","peter@mail.com","1234",new Date("01.01.1995"),"weiblich",new Auto("Kleinwagen","Mini","Cooper S","Rosa"));
     p2.id = 1;
     p2.likes = 2; p2.dislike();
     let f2 = new Fahrt(p2);
@@ -36,7 +36,7 @@ export class DataService {
     this.users.push(p2);
     this.updateAngeboteneFahrten();
 
-    let p3 = new Person("admin","admin","admin","admin",new Date(),"admin",new Auto("Limo","Limomarke","",""));
+    let p3 = new Person("admin","admin","admin","admin",new Date("01.01.1993"),"admin",new Auto("Limo","Limomarke","",""));
     p3.id = 2;
     p3.like();p3.dislikes = 10;
     let f3 = new Fahrt(p3);
