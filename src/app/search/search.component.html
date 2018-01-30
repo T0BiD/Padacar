@@ -43,7 +43,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" placeholder="Zeit" >
+    <input matInput [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" placeholder="Zeit" [(ngModel)]="time" >
     <!-- <input [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4"> -->
     <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
 </mat-form-field>
@@ -52,8 +52,8 @@
 <button mat-raised-button color="primary" (click)="onSearch()">Suche</button>
 <hr />
 <div *ngIf="isSearch">
-  <div *ngFor="let f of fahrten">
-    <mat-card class="example-card">
+  <div *ngFor="let f of fahrten; let i = index">
+    <mat-card class="example-card" (click)="onDrive(i)">
   <mat-card-header>
      <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{f.fahrer.vorname}} {{f.fahrer.name}}</mat-card-title>

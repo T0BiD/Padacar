@@ -8,7 +8,7 @@ import { MatFormFieldModule, MatInputModule, MatDialogModule } from '@angular/ma
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
 import { CreateRideComponent } from './create-ride/create-ride.component';
-import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime'; 
+import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
   { path: 'profile/:id', component: ProfileComponent },
   { path:'suche', component: SearchComponent },
-  { path:'fahrt', component: RideDetailComponent },
+  { path:'fahrt/:id', component: RideDetailComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full'},
 
 ];

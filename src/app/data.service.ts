@@ -15,6 +15,7 @@ export class DataService {
     this.angemeldeterUser = null;
     this.users = new Array<Person>();
     this.angeboteneFahrten = new Array<Fahrt>();
+
     let p1 = new Person("Maier","Hans","hansmaier@mail.com","1234",new Date(),"trans",new Auto("","","",""));
     p1.id = 0;
     this.users.push(p1);
@@ -29,6 +30,10 @@ export class DataService {
     let f = new Fahrt(
       this.users[0]);
       this.angeboteneFahrten.push(f);
+
+      let f2 = new Fahrt(this.users[1]);
+      f2.id = 1;
+      this.angeboteneFahrten.push(f2);
   }
 
   updateAngeboteneFahrten(){
