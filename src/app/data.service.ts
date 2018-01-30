@@ -16,24 +16,36 @@ export class DataService {
     this.users = new Array<Person>();
     this.angeboteneFahrten = new Array<Fahrt>();
 
-    let p1 = new Person("Maier","Hans","hansmaier@mail.com","1234",new Date(),"trans",new Auto("","","",""));
+    let p1 = new Person("Maier","Hans","hansmaier@mail.com","1234",new Date(),"trans",new Auto("Kombi","VW","Passat","Grün"));
     p1.id = 0;
+    p1.likes = 4; p1.dislike();
+    let f1 = new Fahrt(p1);
+    f1.start = "paderborn";f1.ziel = "München";f1.datum=new Date();f1.id = this.angeboteneFahrten.length++;f1.maxmitfahrer = 4;
+    f1.uhrzeit = "12:20"; f1.gepaeck=true;
+    p1.bieteFahrtAn(f1);
     this.users.push(p1);
-    let p2 = new Person("ads","Hans","ads","1234",new Date(),"trans",new Auto("","","",""));
+    this.updateAngeboteneFahrten();
+    
+    let p2 = new Person("Hans","Peter","peter@mail.com","1234",new Date(),"weiblich",new Auto("Kleinwagen","Mini","Cooper S","Rosa"));
     p2.id = 1;
+    p2.likes = 2; p2.dislike();
+    let f2 = new Fahrt(p2);
+    f2.start = "paderborn";f2.ziel = "München";f2.datum=new Date();f2.id = this.angeboteneFahrten.length++;f2.maxmitfahrer = 4;
+    f2.uhrzeit = "12:20"; f2.gepaeck=true;
+    p2.bieteFahrtAn(f2);
     this.users.push(p2);
-    let p3 = new Person("admin","admin","admin","admin",new Date(),"admin",new Auto("","","",""));
+    this.updateAngeboteneFahrten();
+
+    let p3 = new Person("admin","admin","admin","admin",new Date(),"admin",new Auto("Limo","Limomarke","",""));
     p3.id = 2;
+    p3.like();p3.dislikes = 10;
+    let f3 = new Fahrt(p3);
+    f3.start = "paderborn";f3.ziel = "München";f3.datum=new Date();f3.id = this.angeboteneFahrten.length++;f3.maxmitfahrer = 4;
+    f3.uhrzeit = "12:20"; f3.gepaeck=true;
+    p3.bieteFahrtAn(f3);
     this.users.push(p3);
+    this.updateAngeboteneFahrten();
   
-
-    let f = new Fahrt(
-      this.users[0]);
-      this.angeboteneFahrten.push(f);
-
-      let f2 = new Fahrt(this.users[1]);
-      f2.id = 1;
-      this.angeboteneFahrten.push(f2);
   }
 
   updateAngeboteneFahrten(){

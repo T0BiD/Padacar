@@ -98,6 +98,7 @@ export class Fahrt {
         this.preis = 30;
         this.regelmaessig ="wöchentlich"
         this.mitfahrer = new Array<Person>();
+        this.requestedMitfahrer = new Array<Person>();
 
     }
 
