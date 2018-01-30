@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Person, Fahrt, Auto } from '../classes';
 import { DatePipe } from '@angular/common';
 import { DataService } from '../data.service';
@@ -18,10 +18,11 @@ export class RideDetailComponent implements OnInit {
   private id: number;
   private fahrt: Fahrt;
 
-  constructor(private router: Router, private datePipe: DatePipe, private dataService: DataService, public dialog: MatDialog) { 
+  constructor(private router: Router, private datePipe: DatePipe, private dataService: DataService, public dialog: MatDialog, private route: ActivatedRoute) {
     this.fahrten = dataService.angeboteneFahrten;
     //need id via navParams
-    this.id = 0;    
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    console.log(this.id);
     this.fahrtAnzeigen();
   }
 
@@ -29,8 +30,16 @@ export class RideDetailComponent implements OnInit {
   }
 
   private fahrtAnzeigen(){
-    //this.fahrt = this.fahrten[this.id];
-    this.fahrt = new Fahrt(this.dataService.users[0]);
+
+    let i = 0;
+    for(let f of this.dataService.angeboteneFahrten){
+    if(f.id == this.id){
+      this.fahrt = this.dataService.angeboteneFahrten[i];
+      console.log(this.fahrt);
+    }
+    i++;
+  }
+  
   }
 
   anfrageSenden(){
@@ -43,19 +52,19 @@ export class RideDetailComponent implements OnInit {
       });
 
       if(darfmitfahren){
-        this.fahrt.addMitfahrer(this.dataService.angemeldeterUser); 
+        this.fahrt.addMitfahrer(this.dataService.angemeldeterUser);
       } else{
         //hier vllt fehler ausgeben
         console.log("du bist doch schon am mitfahren amk")
       }
-      
+
 
     } else {
       this.login();
     }
 
   }
-  
+
   login(): void {
     let dialogRef = this.dialog.open(LoginComponent, {
       data: {}

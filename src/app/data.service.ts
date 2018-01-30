@@ -18,11 +18,15 @@ export class DataService {
 
     this.users.push(new Person("Maier","Hans","hansmaier@mail.com","1234",new Date(),"trans",new Auto("","","","")));
     this.users.push(new Person("ads","Hans","ads","1234",new Date(),"trans",new Auto("","","","")));
-  
+
 
     let f = new Fahrt(
       this.users[0]);
       this.angeboteneFahrten.push(f);
+
+      let f2 = new Fahrt(this.users[1]);
+      f2.id = 1;
+      this.angeboteneFahrten.push(f2);
   }
 
   updateAngeboteneFahrten(){
