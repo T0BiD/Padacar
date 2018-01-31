@@ -70,6 +70,7 @@ export class RideDetailComponent implements OnInit {
   like(){
     if(this.dataService.angemeldeterUser){
       this.fahrt.like(this.dataService.angemeldeterUser);
+      this.likeable = false;
     }
     this.darfmanlikenunddisliken();
     
@@ -77,6 +78,7 @@ export class RideDetailComponent implements OnInit {
   dislike(){
     if(this.dataService.angemeldeterUser){
       this.fahrt.dislike(this.dataService.angemeldeterUser);
+      this.likeable = false;
     }
     this.darfmanlikenunddisliken();
   }
