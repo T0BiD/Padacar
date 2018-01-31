@@ -68,9 +68,10 @@ export class CreateRideComponent implements OnInit {
       neueFahrt.requestedMitfahrer = new Array<Person>();
 
       let tempdate = new Date(neueFahrt.datum);
-      tempdate.setHours(this.uhrzeit.substring(0,2), this.uhrzeit.substring(3,5));
+      tempdate.setHours((Number)(this.uhrzeit.substring(0,2)), (Number)(this.uhrzeit.substring(3,5)));
       neueFahrt.datum = tempdate;
-      
+
+
       if(new Date(neueFahrt.datum)>=new Date()){
         this.neueFahrt =  neueFahrt;
         console.log(this.neueFahrt);
