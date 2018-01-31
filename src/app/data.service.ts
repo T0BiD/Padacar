@@ -44,6 +44,9 @@ export class DataService {
     f3.uhrzeit = "12:20"; f3.gepaeck=true;
     p3.bieteFahrtAn(f3);
     this.users.push(p3);
+    f2.addMitfahrer(p3);
+    p3.mitgefahreneFahrten.push(f2);
+
     this.updateAngeboteneFahrten();
 
 }

@@ -24,7 +24,7 @@
               <p>Name: {{user.vorname}} {{user.name}}</p>
               <p>Geschlecht: {{user.geschlecht}}</p>
               <p>Geburtstag: {{user.geburtsdatum | date:'dd.MM.yyyy'}}</p>
-              <p>EMail: {{user.email}}</p>
+              <p>E-Mail: {{user.email}}</p>
               <br>
               <br>
               <table>
@@ -63,9 +63,13 @@
       <div class="fahrtendetailstext" align="left">
         <br>
         <h3>Fahrtenhistorie:</h3>
-        <ul >
-
-          <li *ngFor="let fahrt of this.user.gefahreneFahrten">{{fahrt.datum}}: {{fahrt.start}} -> {{fahrt.ziel}}</li>
+        <h4 *ngIf="this.user.gefahreneFahrten.length!==0">Fahrer:</h4>
+        <ul *ngIf="this.user.gefahreneFahrten.length!==0">
+          <li *ngFor="let fahrt of this.user.gefahreneFahrten">{{fahrt.datum | date:'dd.MM.yyyy'}}: {{fahrt.start}} -> {{fahrt.ziel}}</li>
+        </ul>
+        <h4 *ngIf="this.user.mitgefahreneFahrten.length!==0">Mitfahrer:</h4>
+        <ul *ngIf="this.user.mitgefahreneFahrten.length!==0">
+            <li *ngFor="let fahrt of this.user.mitgefahreneFahrten">{{fahrt.datum | date:'dd.MM.yyyy'}}: {{fahrt.start}} -> {{fahrt.ziel}}</li>
         </ul>
 
 
