@@ -3,10 +3,13 @@ body{
     background: rgb(230,230,230);
     font-family: Arial, Helvetica, sans-serif;
 }
-
+p{
+  color: red;
+  text-align: center;
+}
 .example-card {
   width: 35em;
-  height: 175px;
+  height: 185px;
 }
 
 .example-header-image {

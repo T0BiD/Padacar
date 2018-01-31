@@ -55,17 +55,33 @@ this.fahrten = [];
 this.fehlermeldung = "";
 
     let alleFahrten = this.data.angeboteneFahrten;
+    let fahrtengenau = [];
 
     console.log(alleFahrten);
     for(let f of alleFahrten){
 
+
       if( (f.start.toLowerCase() == this.startort.toLowerCase()
-      || f.ziel.toLowerCase() == this.zielort.toLowerCase())
+      && f.ziel.toLowerCase() == this.zielort.toLowerCase())
       && f.datum >= new Date(this.datum)){
-        this.fahrten.push(f);
+        fahrtengenau.push(f);
       }
 
 
+    }
+
+    if(fahrtengenau.length==0){
+      for(let f of alleFahrten){
+
+
+        if( (f.start.toLowerCase() == this.startort.toLowerCase()
+        || f.ziel.toLowerCase() == this.zielort.toLowerCase())
+        && f.datum >= new Date(this.datum)){
+          this.fahrten.push(f);
+        }
+      }
+    } else {
+      this.fahrten = fahrtengenau;
     }
     console.log(this.fahrten);
     this.isSearch = true;

@@ -23,7 +23,7 @@
               <h3>Fahrerdetails:</h3>
               <p>Name: {{user.vorname}} {{user.name}}</p>
               <p>Geschlecht: {{user.geschlecht}}</p>
-              <p>Geburtstag: {{user.geburtsdatum | date}}</p>
+              <p>Geburtstag: {{user.geburtsdatum | date:'dd.MM.yyyy'}}</p>
               <p>EMail: {{user.email}}</p>
               <br>
               <br>
@@ -64,7 +64,7 @@
         <br>
         <h3>Fahrtenhistorie:</h3>
         <ul >
-          
+
           <li *ngFor="let fahrt of this.user.gefahreneFahrten">{{fahrt.datum}}: {{fahrt.start}} -> {{fahrt.ziel}}</li>
         </ul>
 
