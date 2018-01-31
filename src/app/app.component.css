@@ -6,7 +6,9 @@ mat-toolbar{
 }
 
 .homebutton{
-  border-color: transparent;
+  border-color:darkblue;
+  border-radius: 100%;
+  background: transparent;
 }
 
 .loginbutton{
