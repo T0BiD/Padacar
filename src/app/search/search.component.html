@@ -31,15 +31,7 @@
           <input type="date" name="datum" [(ngModel)]="datum" required>
         </td>
       </tr>
-      <tr>
-        <td>
-          <label>Uhrzeit:</label>
-        </td>
-        <td></td>
-        <td>
-          <input type="time" name="uhrzeit" [(ngModel)]="uhrzeit" required>
-        </td>
-      </tr>
+
       <br />
       <tr>
         <td>
@@ -47,8 +39,8 @@
         </td>
         <td></td>
         <td>
-          <select [(ngModel)]="geschlecht" >
-              <option *ngFor="let g of geschlechter" [value]="g" required>{{g}}</option>
+          <select [(ngModel)]="geschlecht" name="geschlecht">
+              <option *ngFor="let g of geschlechter" [value]="g">{{g}}</option>
           </select>
         </td>
       </tr>
@@ -59,29 +51,18 @@
         <td></td>
         <td>
           <select [(ngModel)]="gepaeckstueck" name="gepaeckstueck">
-            <option *ngFor="let text of gepaeck" value= {{text}}>{{text == "true" ? 'Ja' : 'Nein'}}</option>
+            <option *ngFor="let text of gepaeck" [value]= "text">{{text}}</option>
           </select>
         </td>
       </tr>
       <br />
       <tr>
         <td>
-          <label>Regemläßig:</label>
-        </td>
-        <td></td>
-        <td>
-            <select [(ngModel)]="regel" name="regel">
-                <option *ngFor="let text of regelmaessig" value= {{text}}>{{text}}</option>
-              </select>
-        </td>
-      </tr>
-      <tr>
-        <td>
           <label>Preis:</label>
         </td>
         <td></td>
         <td>
-          <input type="number" name="preis" [(ngModel)]="preis" placeholder="20,00" required><label>  €</label>
+          <input type="number" name="preis" [(ngModel)]="preis" placeholder="20,00"><label>  €</label>
         </td>
       </tr>
     </table>
