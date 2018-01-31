@@ -4,6 +4,7 @@ import { DataService } from './data.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { LoginComponent } from './login/login.component';
 import { Router } from '@angular/router';
+import { RegistrationComponent } from './registration/registration.component';
 
 @Component({
   selector: 'app-root',
@@ -36,6 +37,11 @@ export class AppComponent {
   logout(){
     this.data.angemeldeterUser = null;
     this.router.navigate(['/home/']);
+    
+  }
+
+  register(){
+    this.router.navigate(['/registration/']);
   }
 
   home(){

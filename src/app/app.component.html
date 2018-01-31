@@ -6,6 +6,9 @@
     <button *ngIf="!data.angemeldeterUser" (click)="login()" class="loginbutton">
         Login
     </button>
+    <button *ngIf="!data.angemeldeterUser" (click)="register()" class="loginbutton">
+            Register
+        </button>
     <button *ngIf="data.angemeldeterUser" (click)="gotoProfile()" class="loginbutton">
         Profil
     </button>

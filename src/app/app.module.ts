@@ -27,6 +27,7 @@ import { RegistrationComponent } from './registration/registration.component';
 const routes: Routes = [
   //Normal:   { path: 'home', component: LandingPageComponent },
   { path: 'createride', component: CreateRideComponent },
+  { path: 'registration', component: RegistrationComponent },
   { path: 'home', component: LandingPageComponent },
   { path: 'profile/:id', component: ProfileComponent },
   { path:'suche', component: SearchComponent },
