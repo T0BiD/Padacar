@@ -46,10 +46,13 @@ export class DataService {
     this.users.push(p3);
     this.updateAngeboteneFahrten();
 
+<<<<<<< HEAD
 
     this.load();
     
   
+=======
+>>>>>>> steffenszeug4
   }
 
   updateAngeboteneFahrten(){
