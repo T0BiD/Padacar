@@ -31,6 +31,8 @@ export class CreateRideComponent implements OnInit {
   public gepaeck: Array<String> = ["false", "true"];
   public regelmaessig: Array<String> = ["Nein", "wöchentlich", "täglich"];
 
+  public fehlermeldung = "";
+
   constructor(private router: Router, private dataService: DataService, private dialog : MatDialog) {
 
   }
@@ -43,6 +45,7 @@ export class CreateRideComponent implements OnInit {
 
 
     if (this.dataService.angemeldeterUser != null) {
+      this.fehlermeldung = "";
       let neueFahrt = new Fahrt(this.dataService.angemeldeterUser);
       neueFahrt.fahrer = this.dataService.angemeldeterUser;
       this.person = this.dataService.angemeldeterUser;
@@ -63,14 +66,20 @@ export class CreateRideComponent implements OnInit {
       neueFahrt.regelmaessig = this.regel;
       neueFahrt.mitfahrer = new Array<Person>();
       neueFahrt.requestedMitfahrer = new Array<Person>();
-      this.neueFahrt =  neueFahrt;
-      console.log(this.neueFahrt);
-      this.person.bieteFahrtAn(neueFahrt);
-      this.person.updateFahrten();
-      this.dataService.updateAngeboteneFahrten();
-      this.dataService.save();
-      console.info(this.person.angeboteneFahrten);
-      this.router.navigate(['/fahrt/'+neueFahrt.id]);
+
+      if(new Date(neueFahrt.datum)>new Date()){
+        this.neueFahrt =  neueFahrt;
+        console.log(this.neueFahrt);
+        this.person.bieteFahrtAn(neueFahrt);
+        this.person.updateFahrten();
+        this.dataService.updateAngeboteneFahrten();
+        console.info(this.person.angeboteneFahrten);
+        this.router.navigate(['/fahrt/'+neueFahrt.id]);
+      } else {
+        console.log("Kein Datum aus der Vergangenheit.");
+        this.fehlermeldung = "Kein Datum aus der Vergangenheit.";
+      }
+      
     } else {
       console.log("keiner angemeldet");
       this.login();
@@ -91,7 +100,10 @@ export class CreateRideComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.fahrtAnbieten();
+      if(this.dataService.angemeldeterUser){
+        this.fahrtAnbieten();
+      }
+      
     });
   }
 

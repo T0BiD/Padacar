@@ -39,7 +39,10 @@ export class LandingPageComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate(['/createride']);
+      if(this.dataService.angemeldeterUser){
+        this.router.navigate(['/createride']);
+      }
+      
       console.log('The dialog was closed');
     });
   }

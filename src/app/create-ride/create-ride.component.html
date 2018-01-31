@@ -88,6 +88,8 @@
             </td>
           </tr>
         </table>
+        <br>
+        <div style="color:red" *ngIf="fehlermeldung!=''">{{fehlermeldung}}</div>
         <br><br><br><br>
         <button mat-button class="btnfahrtanbieten" (click)="fahrtAnbieten()"><b>Fahrt anlegen</b></button>
         <a mat-button class="back" routerLink="landing-page">Abbrechen</a>
