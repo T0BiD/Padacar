@@ -9,7 +9,7 @@
     <!-- <button *ngIf="likeable" (click)="dislike()">Dislike</button> -->
     <img src="/assets/thumb-down.png" *ngIf="likeable" (click)="dislike()" alt="Avatar" class="ratingdown">
     <h2>{{fahrt.fahrer.vorname}} {{fahrt.fahrer.name}}</h2>
-   
+
   </div>
 
   <br>
@@ -24,7 +24,7 @@
         <p>Datum: {{fahrt.datum | date:'dd.MM.yyyy'}}</p>
         <p>Uhrzeit: {{fahrt.uhrzeit}}</p>
         <p>Preis: {{fahrt.preis}} €</p>
-        <p>Gepäckmitnahme: {{fahrt.gepaeck == 'true' ? 'Ja' : 'Nein'}}</p>
+        <p>Gepäckmitnahme: {{fahrt.gepaeck ? 'Ja' : 'Nein'}}</p>
         <p>Maximale Anzahl Mitfahrer: {{fahrt.maxmitfahrer}}</p>
         <p>Aktuelle Anzahl Mitfahrer: {{fahrt.mitfahrer.length}}</p>
         <p>Regelmäßige Fahrt: {{fahrt.regelmaessig}}</p>

@@ -17,8 +17,8 @@ export class SearchComponent implements OnInit {
  private person: Person;
 
  public mitfahrer: number= 1;
- public gepaeckstueck = "false";
- public regel = "Nein";
+ public gepaeckstueck = "egal";
+ public geschlecht: string;
 
  public startort: string = "";
  public zielort: string = "";
@@ -27,9 +27,7 @@ export class SearchComponent implements OnInit {
  public preis: number = null;
 
  public geschlechter: Array<String> = ['männlich', 'weiblich', 'agender', 'bigender', 'demigender', 'Enby', 'genderfluid', 'Ilyagender', 'Sonstige'];
- public maxmitfahrer: Array<number> = [1, 2, 3, 4, 5, 6];
- public gepaeck: Array<String> = ["false", "true"];
- public regelmaessig: Array<String> = ["Nein", "wöchentlich", "täglich"];
+ public gepaeck: Array<String> = ['egal','ja', 'nein'];
 
 public fehlermeldung = "";
  isSearch: boolean = false;
@@ -51,6 +49,18 @@ public fehlermeldung = "";
 
   onSearch(){
 
+    console.log("Auswahl:");
+    console.log("Start:"+this.startort);
+    console.log("Ziel:"+this.zielort);
+    console.log("Datum:"+this.datum);
+    console.log("Geschlecht:"+this.geschlecht);
+    console.log("Gepäck:"+this.gepaeckstueck);
+    console.log("Preis:"+this.preis);
+    console.log("-------------");
+
+
+
+
 this.fahrten = [];
 this.fehlermeldung = "";
 
@@ -64,12 +74,16 @@ this.fehlermeldung = "";
       if( (f.start.toLowerCase() == this.startort.toLowerCase()
       && f.ziel.toLowerCase() == this.zielort.toLowerCase())
       && f.datum >= new Date(this.datum)){
-        fahrtengenau.push(f);
+        if(this.gepaeckstueck=="egal"
+        || (this.gepaeckstueck == "ja" && f.gepaeck == true)
+        || (this.gepaeckstueck == "nein" && f.gepaeck == false)){
+          fahrtengenau.push(f);
+        }
+
       }
 
 
     }
-
     if(fahrtengenau.length==0){
       for(let f of alleFahrten){
 
@@ -77,12 +91,18 @@ this.fehlermeldung = "";
         if( (f.start.toLowerCase() == this.startort.toLowerCase()
         || f.ziel.toLowerCase() == this.zielort.toLowerCase())
         && f.datum >= new Date(this.datum)){
-          this.fahrten.push(f);
+
+          if(this.gepaeckstueck=="egal"
+          || (this.gepaeckstueck == "ja" && f.gepaeck == true)
+          || (this.gepaeckstueck == "nein" && f.gepaeck == false)){
+            fahrtengenau.push(f);
+          }
         }
       }
-    } else {
-      this.fahrten = fahrtengenau;
     }
+
+      this.fahrten = fahrtengenau;
+    
     console.log(this.fahrten);
     this.isSearch = true;
     if(this.fahrten.length <= 0)
