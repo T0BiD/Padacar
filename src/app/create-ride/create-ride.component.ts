@@ -67,7 +67,11 @@ export class CreateRideComponent implements OnInit {
       neueFahrt.mitfahrer = new Array<Person>();
       neueFahrt.requestedMitfahrer = new Array<Person>();
 
-      if(new Date(neueFahrt.datum)>new Date()){
+      let tempdate = new Date(neueFahrt.datum);
+      tempdate.setHours(this.uhrzeit.substring(0,2), this.uhrzeit.substring(3,5));
+      neueFahrt.datum = tempdate;
+      
+      if(new Date(neueFahrt.datum)>=new Date()){
         this.neueFahrt =  neueFahrt;
         console.log(this.neueFahrt);
         this.person.bieteFahrtAn(neueFahrt);
@@ -79,13 +83,13 @@ export class CreateRideComponent implements OnInit {
         console.log("Kein Datum aus der Vergangenheit.");
         this.fehlermeldung = "Kein Datum aus der Vergangenheit.";
       }
-      
+
     } else {
       console.log("keiner angemeldet");
       this.login();
     }
 
-    
+
 
     //this.zusätzlicheFahrtenErstellen();
 
@@ -103,7 +107,7 @@ export class CreateRideComponent implements OnInit {
       if(this.dataService.angemeldeterUser){
         this.fahrtAnbieten();
       }
-      
+
     });
   }
 
