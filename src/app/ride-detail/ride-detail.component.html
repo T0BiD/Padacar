@@ -4,7 +4,9 @@
 
   <div align="center" class="fahrerhead">
     <img src="/assets/fahrtsuchen_groß2.png" alt="Avatar" class="imagesmall">
+    <button *ngIf="likeable" (click)="like()">Like</button>
     <h2>{{fahrt.fahrer.vorname}} {{fahrt.fahrer.name}}</h2>
+    <button *ngIf="likeable" (click)="dislike()">Dislike</button>
   </div>
 
   <br>

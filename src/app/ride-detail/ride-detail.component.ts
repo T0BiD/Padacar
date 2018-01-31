@@ -16,14 +16,19 @@ export class RideDetailComponent implements OnInit {
 
   private fahrten: Array<Fahrt>;
   private id: number;
-  private fahrt: Fahrt;
+  public fahrt: Fahrt;
+  private likeable : boolean;
+
 
   constructor(private router: Router, private datePipe: DatePipe, private dataService: DataService, public dialog: MatDialog, private route: ActivatedRoute) {
     this.fahrten = dataService.angeboteneFahrten;
     //need id via navParams
     this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.likeable = false;
+    
     console.log(this.id);
     this.fahrtAnzeigen();
+    this.darfmanlikenunddisliken();
   }
 
   ngOnInit() {
@@ -62,6 +67,43 @@ export class RideDetailComponent implements OnInit {
 
   }
 
+  like(){
+    if(this.dataService.angemeldeterUser){
+      this.fahrt.like(this.dataService.angemeldeterUser);
+    }
+    this.darfmanlikenunddisliken();
+    
+  }
+  dislike(){
+    if(this.dataService.angemeldeterUser){
+      this.fahrt.dislike(this.dataService.angemeldeterUser);
+    }
+    this.darfmanlikenunddisliken();
+  }
+
+  darfmanlikenunddisliken(){
+    if(true || new Date(this.fahrt.datum)<new Date()){ //#todo zum testen
+      let binichmitfahrer = false;
+      this.fahrt.mitfahrer.forEach(m => {
+        if(m.id == this.dataService.angemeldeterUser.id){
+          binichmitfahrer = true;
+        }
+      });
+      
+      let schongeliked = false;
+     this.fahrt.haveliked.forEach(p => {
+      if(p.id==this.dataService.angemeldeterUser.id){
+        schongeliked = true;
+      }
+     });
+      
+      if(!schongeliked && binichmitfahrer){
+        this.likeable = true;
+      }
+    }
+  }
+
+
   login(): void {
     let dialogRef = this.dialog.open(LoginComponent, {
       data: {}
@@ -72,4 +114,9 @@ export class RideDetailComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
+  
+  
+
+
 }

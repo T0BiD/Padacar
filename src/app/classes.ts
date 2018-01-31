@@ -41,12 +41,7 @@ export class Person {
         this.auto = auto;
     }
 
-    like() {
-        this.likes++;
-    }
-    dislike() {
-        this.dislikes++;
-    }
+    
     bieteFahrtAn(fahrt: Fahrt) {
         this.angeboteneFahrten.push(fahrt);
 
@@ -87,6 +82,7 @@ export class Fahrt {
     uhrzeit: string;
     preis: number;
     regelmaessig: string;
+    haveliked : Array<Person>;
 
 
     constructor(fahrer){
@@ -102,6 +98,7 @@ export class Fahrt {
         this.regelmaessig ="wöchentlich"
         this.mitfahrer = new Array<Person>();
         this.requestedMitfahrer = new Array<Person>();
+        this.haveliked = new Array<Person>();
 
     }
 
@@ -142,6 +139,15 @@ export class Fahrt {
 
         }
         return false;
+    }
+
+    like(mitfahrer : Person) {
+        this.fahrer.likes++;
+        this.haveliked.push(mitfahrer);
+    }
+    dislike(mitfahrer : Person) {
+        this.fahrer.dislikes++;
+        this.haveliked.push(mitfahrer);
     }
 
 }
