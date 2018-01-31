@@ -80,7 +80,51 @@ this.fehlermeldung = "";
 
           switch(this.geschlecht){
             case "egal": fahrtengenau.push(f); break;
-            case "männlich" && f.fahrer.geschlecht == "männlich": fahrtengenau.push(f); break;
+            case "männlich":
+              if( f.fahrer.geschlecht == "männlich"){
+                fahrtengenau.push(f);
+              }
+                 break;
+              case "weiblich":
+              if( f.fahrer.geschlecht == "weiblich"){
+               fahrtengenau.push(f);
+              }
+              break;
+              case "agender":
+              if( f.fahrer.geschlecht == "agender"){
+               fahrtengenau.push(f);
+              }
+              break;
+              case "bigender":
+              if( f.fahrer.geschlecht == "bigender"){
+               fahrtengenau.push(f);
+              }
+              break;
+              case "demigender":
+              if( f.fahrer.geschlecht == "demigender"){
+               fahrtengenau.push(f);
+              }
+              break;
+              case "Enby":
+              if( f.fahrer.geschlecht == "Enby"){
+               fahrtengenau.push(f);
+              }
+              break;
+              case "genderfluid":
+              if( f.fahrer.geschlecht == "genderfluid"){
+               fahrtengenau.push(f);
+              }
+              break;
+              case "Ilyagender":
+              if( f.fahrer.geschlecht == "Ilyagender"){
+               fahrtengenau.push(f);
+              }
+              break;
+              case "Sonstige":
+              if( f.fahrer.geschlecht == "Sonstige"){
+               fahrtengenau.push(f);
+              }
+              break;
             default:
           }
 
