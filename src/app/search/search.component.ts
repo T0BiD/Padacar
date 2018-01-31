@@ -31,6 +31,7 @@ export class SearchComponent implements OnInit {
  public gepaeck: Array<String> = ["false", "true"];
  public regelmaessig: Array<String> = ["Nein", "wöchentlich", "täglich"];
 
+public fehlermeldung = "";
  isSearch: boolean = false;
 
  fahrten: Array<Fahrt> = [];
@@ -51,21 +52,29 @@ export class SearchComponent implements OnInit {
   onSearch(){
 
 this.fahrten = [];
+this.fehlermeldung = "";
+
     let alleFahrten = this.data.angeboteneFahrten;
+
+    console.log(alleFahrten);
     for(let f of alleFahrten){
-      console.log(this.datum);
-      console.log(f.datum);
 
-console.log(new Date(this.datum));
-
-      if( (f.start == this.startort || f.ziel == this.zielort) && f.datum >= new Date(this.datum)){
+      if( (f.start.toLowerCase() == this.startort.toLowerCase()
+      || f.ziel.toLowerCase() == this.zielort.toLowerCase())
+      && f.datum >= new Date(this.datum)){
         this.fahrten.push(f);
       }
 
 
     }
     console.log(this.fahrten);
-this.isSearch = true;
+    this.isSearch = true;
+    if(this.fahrten.length <= 0)
+    {
+      this.fehlermeldung = "Es wurden keine Fahrten gefunden!";
+      this.isSearch = false;
+    }
+
   }
 
 }

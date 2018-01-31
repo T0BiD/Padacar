@@ -85,8 +85,12 @@
         </td>
       </tr>
     </table>
+    <br />
 
   <button mat-raised-button color="primary" (click)="onSearch()">Suche</button>
+
+
+  <p style="color:red" *ngIf="fehlermeldung!=''">{{fehlermeldung}}</p>
   </div>
 </div>
 
