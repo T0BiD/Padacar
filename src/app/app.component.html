@@ -12,6 +12,9 @@
     <button *ngIf="data.angemeldeterUser" (click)="gotoProfile()" class="loginbutton">
         Profil
     </button>
+    <button *ngIf="data.angemeldeterUser" (click)="changeProfile()" class="loginbutton">
+        Profil bearbeiten
+    </button>
     <button *ngIf="data.angemeldeterUser" (click)="logout()" class="loginbutton">
         Logout
     </button>

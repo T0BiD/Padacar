@@ -16,7 +16,7 @@ export class AppComponent {
   password: string;
   name: string;
   constructor(private data: DataService,  public dialog: MatDialog , private router : Router){
-    
+
   }
 
   login(): void {
@@ -33,11 +33,14 @@ export class AppComponent {
     let index = this.data.angemeldeterUser.id;
     this.router.navigate(['/profile/'+index]);
   }
-
+  changeProfile(){
+    let index = this.data.angemeldeterUser.id;
+    this.router.navigate(['/change-profile/'+index]);
+  }
   logout(){
     this.data.angemeldeterUser = null;
     this.router.navigate(['/home/']);
-    
+
   }
 
   register(){

@@ -150,6 +150,8 @@ export class DataService {
     this.users.push(p12);
 
     this.updateAngeboteneFahrten();
+    console.log(this.angeboteneFahrten);
+    console.log(this.vergangenenFahrten);
 }
 
 
@@ -168,7 +170,7 @@ export class DataService {
         newVergFahrt.push(fahrt);
       });
     });
-    
+
     this.vergangenenFahrten = newVergFahrt;
     this.angeboteneFahrten = newAngFahrt;
     return this.angeboteneFahrten;
