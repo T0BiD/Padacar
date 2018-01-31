@@ -20,6 +20,7 @@ import { DriverDetailComponent } from './driver-detail/driver-detail.component';
 import { DataService } from './data.service';
 import { ProfileComponent } from './profile/profile.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ChangeProfileComponent } from './change-profile/change-profile.component';
 
 
 
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'home', component: LandingPageComponent },
   { path: 'profile/:id', component: ProfileComponent },
+  { path: 'change-profile/:id', component: ChangeProfileComponent },
   { path:'suche', component: SearchComponent },
   { path:'fahrt/:id', component: RideDetailComponent },
   { path: '**', redirectTo: '/home', pathMatch: 'full'},
@@ -48,6 +50,7 @@ const routes: Routes = [
     ProfileComponent,
     RegistrationComponent,
     CreateRideComponent,
+    ChangeProfileComponent,
   ],
   imports: [
     BrowserModule, MaterialModule, RouterModule.forRoot(routes, {useHash:true}),FormsModule, ReactiveFormsModule, MatFormFieldModule,
