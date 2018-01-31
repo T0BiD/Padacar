@@ -16,7 +16,7 @@ export class DataService {
     this.users = new Array<Person>();
     this.angeboteneFahrten = new Array<Fahrt>();
 
-    let p1 = new Person("Maier","Hans","hansmaier@mail.com","1234",new Date("01.01.1990"),"trans",new Auto("Kombi","VW","Passat","Grün"));
+    let p1 = new Person("Maier","Hans","hansmaier@mail.com","1234",new Date("01.01.1990"),"männlich",new Auto("Kombi","VW","Passat","Grün"));
     p1.id = 0;
     p1.likes = 4;p1.dislikes++;
     let f1 = new Fahrt(p1);
@@ -34,7 +34,7 @@ export class DataService {
     p2.bieteFahrtAn(f2);
     this.users.push(p2);
 
-    let p3 = new Person("admin","admin","admin","admin",new Date("01.01.1993"),"admin",new Auto("Limo","Limomarke","",""));
+    let p3 = new Person("admin","admin","admin","admin",new Date("01.01.1993"),"Sonstige",new Auto("Limo","Limomarke","",""));
     p3.id = 2;
     p3.likes++;p3.dislikes = 10;
     let f3 = new Fahrt(p3);
@@ -46,21 +46,21 @@ export class DataService {
 
 
     let p4 = new Person("Reck","Udo","uda@reck.de","getrecked123",new Date("05.24.1967"),"männlich",new Auto("Supersportwagen","Audi","RS8","weiß"));
-    let p5 = new Person("Yilmaz","Adi","Adi-Yilmaz@web.de","erdogan",new Date("01.02.1990"),"admin",new Auto("Kleinwagen","Opel","Corsa","gelb"));
-    let p6 = new Person("Brugger","Hazel","hazelbrugger@comdey.de","NichtLustig,einfachnurböse",new Date("05.03.1953"),"admin",new Auto("Kombi","Ford","Focus","grau"));
-    let p7 = new Person("Feuerstein","Fred","fred.feuerstein@oldbutgold.com","freddy",new Date("08.04.1943"),"admin",new Auto("Oldtimer","Mercedes","W 116","gold"));
-    let p8 = new Person("Wick","John","john@wick.com","fk235k<ds§UIga4uigBHui§I/§ZUFUIA",new Date("12.05.1997"),"admin",new Auto("Sportwagen","Lexus","RC F","grün"));
-    let p9 = new Person("Pauli","David Florian","dfp@dfp.de","12345679",new Date("06.17.1969"),"admin",new Auto("SUV","BMW","X5","Regenbogenfarben"));
-    let p10 = new Person("van Pader","Uli","UliVanPader@paderborn.de","Paderboring",new Date("07.13.1988"),"admin",new Auto("","","",""));
-    let p11 = new Person("Praktikant","Still","StillPraktikant@nojob.de","prakitkant",new Date("08.25.1974"),"admin",new Auto("","","",""));
-    let p12 = new Person("Beutlin","Bilbo","Bilbo@auenland.de","Meisterdieb123",new Date("09.22.1983"),"admin",new Auto("Kombi","Audi","A3","lila"));
+    let p5 = new Person("Yilmaz","Adi","Adi-Yilmaz@web.de","erdogan",new Date("01.02.1990"),"männlich",new Auto("Kleinwagen","Opel","Corsa","gelb"));
+    let p6 = new Person("Brugger","Hazel","hazelbrugger@comdey.de","NichtLustig,einfachnurböse",new Date("05.03.1953"),"weiblich",new Auto("Kombi","Ford","Focus","grau"));
+    let p7 = new Person("Feuerstein","Fred","fred.feuerstein@oldbutgold.com","freddy",new Date("08.04.1943"),"agender",new Auto("Oldtimer","Mercedes","W 116","gold"));
+    let p8 = new Person("Wick","John","john@wick.com","fk235k<ds§UIga4uigBHui§I/§ZUFUIA",new Date("12.05.1997"),"bigender",new Auto("Sportwagen","Lexus","RC F","grün"));
+    let p9 = new Person("Pauli","David Florian","dfp@dfp.de","12345679",new Date("06.17.1969"),"weiblich",new Auto("SUV","BMW","X5","Regenbogenfarben"));
+    let p10 = new Person("van Pader","Uli","UliVanPader@paderborn.de","Paderboring",new Date("07.13.1988"),"männlich",new Auto("","","",""));
+    let p11 = new Person("Praktikant","Still","StillPraktikant@nojob.de","prakitkant",new Date("08.25.1974"),"männlich",new Auto("","","",""));
+    let p12 = new Person("Beutlin","Bilbo","Bilbo@auenland.de","Meisterdieb123",new Date("09.22.1983"),"männlich",new Auto("Kombi","Audi","A3","lila"));
     p4.id=4; p4.likes=100; p4.dislikes=0;
     p5.id=5; p5.likes=14; p5.dislikes=2;
     p6.id=6; p6.likes=111; p6.dislikes=22;
     p7.id=7; p7.likes=2; p7.dislikes=1;
     p8.id=8; p8.likes=6; p8.dislikes=4;
     p9.id=9; p9.likes=3; p9.dislikes=5;
-    p10.id=10; 
+    p10.id=10;
     p11.id=11;
     p12.id=12; p12.likes=185; p12.dislikes=7;
 
@@ -138,12 +138,12 @@ export class DataService {
     this.users.push(p5);
     this.users.push(p6);
     this.users.push(p7);
-    this.users.push(p8);   
+    this.users.push(p8);
     this.users.push(p9);
     this.users.push(p10);
     this.users.push(p11);
     this.users.push(p12);
- 
+
     this.updateAngeboteneFahrten();
 }
 

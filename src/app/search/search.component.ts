@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
 
  public mitfahrer: number= 1;
  public gepaeckstueck = "egal";
- public geschlecht: string;
+ public geschlecht = "egal";
 
  public startort: string = "";
  public zielort: string = "";
@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit {
  public uhrzeit: string="";
  public preis: number = null;
 
- public geschlechter: Array<String> = ['männlich', 'weiblich', 'agender', 'bigender', 'demigender', 'Enby', 'genderfluid', 'Ilyagender', 'Sonstige'];
+ public geschlechter: Array<String> = ['egal','männlich', 'weiblich', 'agender', 'bigender', 'demigender', 'Enby', 'genderfluid', 'Ilyagender', 'Sonstige'];
  public gepaeck: Array<String> = ['egal','ja', 'nein'];
 
 public fehlermeldung = "";
@@ -77,7 +77,13 @@ this.fehlermeldung = "";
         if(this.gepaeckstueck=="egal"
         || (this.gepaeckstueck == "ja" && f.gepaeck == true)
         || (this.gepaeckstueck == "nein" && f.gepaeck == false)){
-          fahrtengenau.push(f);
+
+          switch(this.geschlecht){
+            case "egal": fahrtengenau.push(f); break;
+            case "männlich" && f.fahrer.geschlecht == "männlich": fahrtengenau.push(f); break;
+            default:
+          }
+
         }
 
       }
@@ -95,14 +101,62 @@ this.fehlermeldung = "";
           if(this.gepaeckstueck=="egal"
           || (this.gepaeckstueck == "ja" && f.gepaeck == true)
           || (this.gepaeckstueck == "nein" && f.gepaeck == false)){
-            fahrtengenau.push(f);
+            switch(this.geschlecht){
+              case "egal": fahrtengenau.push(f); break;
+              case "männlich":
+                if( f.fahrer.geschlecht == "männlich"){
+                  fahrtengenau.push(f);
+                }
+                   break;
+                case "weiblich":
+                if( f.fahrer.geschlecht == "weiblich"){
+                 fahrtengenau.push(f);
+                }
+                break;
+                case "agender":
+                if( f.fahrer.geschlecht == "agender"){
+                 fahrtengenau.push(f);
+                }
+                break;
+                case "bigender":
+                if( f.fahrer.geschlecht == "bigender"){
+                 fahrtengenau.push(f);
+                }
+                break;
+                case "demigender":
+                if( f.fahrer.geschlecht == "demigender"){
+                 fahrtengenau.push(f);
+                }
+                break;
+                case "Enby":
+                if( f.fahrer.geschlecht == "Enby"){
+                 fahrtengenau.push(f);
+                }
+                break;
+                case "genderfluid":
+                if( f.fahrer.geschlecht == "genderfluid"){
+                 fahrtengenau.push(f);
+                }
+                break;
+                case "Ilyagender":
+                if( f.fahrer.geschlecht == "Ilyagender"){
+                 fahrtengenau.push(f);
+                }
+                break;
+                case "Sonstige":
+                if( f.fahrer.geschlecht == "Sonstige"){
+                 fahrtengenau.push(f);
+                }
+                break;
+              default:
+            }
           }
         }
       }
     }
 
       this.fahrten = fahrtengenau;
-    
+
     console.log(this.fahrten);
     this.isSearch = true;
     if(this.fahrten.length <= 0)
