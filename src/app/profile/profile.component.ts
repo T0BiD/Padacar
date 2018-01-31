@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Person } from '../classes';
 import { DataService } from '../data.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router/';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class ProfileComponent implements OnInit {
   user : Person;
 
 
-  constructor(private dataService : DataService, private route : ActivatedRoute) { 
+  constructor(private dataService : DataService, private route : ActivatedRoute, private router : Router) { 
     if(this.dataService.angemeldeterUser){
       this.user = this.dataService.angemeldeterUser;
       console.log("pre update:");
@@ -25,12 +26,21 @@ export class ProfileComponent implements OnInit {
       console.table(this.user.angeboteneFahrten);
       console.log("gefahren:");
       console.table(this.user.gefahreneFahrten);
+      console.log("mitgefahren:");
+      console.table(this.user.mitgefahreneFahrten);
+
+      
      
     } 
     
     
     
   }
+
+  onFahrt(id){
+    this.router.navigate(['/fahrt/' + id]);
+  }
+
 
   ngOnInit() {
 

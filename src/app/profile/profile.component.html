@@ -65,11 +65,11 @@
         <h3>Fahrtenhistorie:</h3>
         <h4 *ngIf="this.user.gefahreneFahrten.length!==0">Fahrer:</h4>
         <ul *ngIf="this.user.gefahreneFahrten.length!==0">
-          <li *ngFor="let fahrt of this.user.gefahreneFahrten">{{fahrt.datum | date:'dd.MM.yyyy'}}: {{fahrt.start}} -> {{fahrt.ziel}}</li>
+          <li (click)="onFahrt(gfahrt.id)" *ngFor="let gfahrt of this.user.gefahreneFahrten">{{gfahrt.datum | date:'dd.MM.yyyy'}}: {{gfahrt.start}} - {{gfahrt.ziel}}</li>
         </ul>
         <h4 *ngIf="this.user.mitgefahreneFahrten.length!==0">Mitfahrer:</h4>
         <ul *ngIf="this.user.mitgefahreneFahrten.length!==0">
-            <li *ngFor="let fahrt of this.user.mitgefahreneFahrten">{{fahrt.datum | date:'dd.MM.yyyy'}}: {{fahrt.start}} -> {{fahrt.ziel}}</li>
+            <li (click)="onFahrt(mfahrt.id)" *ngFor="let mfahrt of this.user.mitgefahreneFahrten">{{mfahrt.datum | date:'dd.MM.yyyy'}}: {{mfahrt.start}} - {{mfahrt.ziel}}</li>
         </ul>
 
 

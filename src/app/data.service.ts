@@ -8,6 +8,7 @@ export class DataService {
 
   users : Array<Person>;
   angeboteneFahrten : Array<Fahrt>;
+  vergangenenFahrten : Array<Fahrt>;
   angemeldeterUser : Person;
 
 
@@ -15,6 +16,7 @@ export class DataService {
     this.angemeldeterUser = null;
     this.users = new Array<Person>();
     this.angeboteneFahrten = new Array<Fahrt>();
+    this.vergangenenFahrten = new Array<Fahrt>();
 
     let p1 = new Person("Maier","Hans","hansmaier@mail.com","1234",new Date("01.01.1990"),"trans",new Auto("Kombi","VW","Passat","Grün"));
     p1.id = 0;
@@ -29,7 +31,7 @@ export class DataService {
     p2.id = 1;
     p2.likes = 2; p2.dislikes++;
     let f2 = new Fahrt(p2);
-    f2.start = "Berlin";f2.ziel = "München";f2.datum=new Date("22.01.2018");f2.id = 2;f2.maxmitfahrer = 4;
+    f2.start = "Berlin";f2.ziel = "München";f2.datum=new Date("01.01.2017");f2.id = 2;f2.maxmitfahrer = 4;
     f2.uhrzeit = "12:20"; f2.gepaeck=true;
     p2.bieteFahrtAn(f2);
     this.users.push(p2);
@@ -38,9 +40,11 @@ export class DataService {
     p3.id = 2;
     p3.likes++;p3.dislikes = 10;
     let f3 = new Fahrt(p3);
-    f3.start = "Paderborn";f3.ziel = "Berlin";f3.datum=new Date("02.02.2018");f3.id = 3;f3.maxmitfahrer = 4;
+    f3.start = "Paderborn";f3.ziel = "Berlin";f3.datum=new Date("01.02.2018");f3.id = 3;f3.maxmitfahrer = 4;
     f3.uhrzeit = "12:20"; f3.gepaeck=true;
     p3.bieteFahrtAn(f3);
+    f2.addMitfahrer(p3);
+    p3.mitgefahreneFahrten.push(f2);
     this.users.push(p3);
 
 
@@ -154,11 +158,17 @@ export class DataService {
     });
 
     let newAngFahrt = new Array<Fahrt>();
+    let newVergFahrt = new Array<Fahrt>();
     this.users.forEach(user => {
       user.angeboteneFahrten.forEach(fahrt => {
         newAngFahrt.push(fahrt);
       });
+      user.gefahreneFahrten.forEach(fahrt => {
+        newVergFahrt.push(fahrt);
+      });
     });
+    
+    this.vergangenenFahrten = newVergFahrt;
     this.angeboteneFahrten = newAngFahrt;
     return this.angeboteneFahrten;
   }
