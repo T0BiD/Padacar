@@ -131,6 +131,9 @@
           </td>
         </tr>
       </table>
+      <p *ngIf="f.maxmitfahrer <= f.mitfahrer.length">
+        Fahrt ist voll!
+      </p>
    </mat-card-content>
 
       </mat-card>
