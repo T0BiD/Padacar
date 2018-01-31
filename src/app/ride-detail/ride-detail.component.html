@@ -3,10 +3,13 @@
 <body>
 
   <div align="center" class="fahrerhead">
+    <img src="/assets/thumb-up.png" *ngIf="likeable" (click)="like()" alt="Avatar" class="ratingup">
+    <!-- <button *ngIf="likeable" (click)="like()">Like</button> -->
     <img src="/assets/fahrtsuchen_groß2.png" alt="Avatar" class="imagesmall">
-    <button *ngIf="likeable" (click)="like()">Like</button>
+    <!-- <button *ngIf="likeable" (click)="dislike()">Dislike</button> -->
+    <img src="/assets/thumb-down.png" *ngIf="likeable" (click)="dislike()" alt="Avatar" class="ratingdown">
     <h2>{{fahrt.fahrer.vorname}} {{fahrt.fahrer.name}}</h2>
-    <button *ngIf="likeable" (click)="dislike()">Dislike</button>
+   
   </div>
 
   <br>
