@@ -56,12 +56,14 @@ export class RideDetailComponent implements OnInit {
   anfrageSenden() {
     if (this.dataService.angemeldeterUser != null) {
       let darfmitfahren = true;
-      if(this.dataService.angemeldeterUser!=this.fahrt.fahrer){
+      if (this.dataService.angemeldeterUser != this.fahrt.fahrer) {
         this.fahrt.mitfahrer.forEach(mitfahrer => {
           if (mitfahrer == this.dataService.angemeldeterUser) {
             darfmitfahren = false;
           }
         });
+      } else {
+        darfmitfahren = false;
       }
 
       if (darfmitfahren) {
@@ -79,18 +81,23 @@ export class RideDetailComponent implements OnInit {
 
   }
 
-  mitfahrable(){
+  mitfahrable() {
     this.darfmitfahren = true;
+
     if (this.dataService.angemeldeterUser != null) {
-      this.fahrt.mitfahrer.forEach(mitfahrer => {
-        if (mitfahrer == this.dataService.angemeldeterUser) {
-          console.log("Darf nicht mitfahren");
-          this.darfmitfahren = false;
-        }
-      });
+      if (this.dataService.angemeldeterUser != this.fahrt.fahrer) {
+        this.fahrt.mitfahrer.forEach(mitfahrer => {
+          if (mitfahrer == this.dataService.angemeldeterUser) {
+            console.log("Darf nicht mitfahren");
+            this.darfmitfahren = false;
+          }
+        });
+      } else {
+        this.darfmitfahren = false;
+      }
     }
-    
-    
+
+
   }
 
   like() {
@@ -132,7 +139,7 @@ export class RideDetailComponent implements OnInit {
           this.likeable = true;
         }
       }
-    } 
+    }
   }
 
 
