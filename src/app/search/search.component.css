@@ -10,14 +10,21 @@ p{
 .example-card {
   width: 35em;
   height: 185px;
+  background: rgba(0, 0, 139, 0.8);
+  color: white;
+}
+.subtitle{
+  background: rgba(0, 0, 139, 0.8);
+  color: white;
 }
 
 .example-header-image {
   background-image: url('/assets/contacts.png');
-  background-size: cover;
+  background-size: cover; 
+
 }
 .fahrtDiv{
-  border-right:1px solid black;
+  border-right:1px solid white;
     margin-bottom: 1em;
     margin-top: 1em;
     padding: 1em;

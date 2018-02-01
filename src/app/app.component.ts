@@ -15,10 +15,9 @@ export class AppComponent {
   title = 'app';
   password: string;
   name: string;
-  constructor(private data: DataService,  public dialog: MatDialog , private router : Router){
-    
-  }
+  constructor(private data: DataService, public dialog: MatDialog, private router: Router) {
 
+  }
   login(): void {
     let dialogRef = this.dialog.open(LoginComponent, {
       data: {}
@@ -28,23 +27,26 @@ export class AppComponent {
       console.log('The dialog was closed');
     });
   }
-
-  gotoProfile(){
+  gotoProfile() {
     let index = this.data.angemeldeterUser.id;
-    this.router.navigate(['/profile/'+index]);
+    this.router.navigate(['/profile/' + index]);
   }
 
-  logout(){
+  logout() {
     this.data.angemeldeterUser = null;
     this.router.navigate(['/home/']);
-    
+
   }
 
-  register(){
+  register() {
     this.router.navigate(['/registration/']);
   }
 
-  home(){
+  home() {
     this.router.navigate(['/home/']);
   }
+  
+ 
+
 }
+
