@@ -56,11 +56,13 @@ export class RideDetailComponent implements OnInit {
   anfrageSenden() {
     if (this.dataService.angemeldeterUser != null) {
       let darfmitfahren = true;
-      this.fahrt.mitfahrer.forEach(mitfahrer => {
-        if (mitfahrer == this.dataService.angemeldeterUser) {
-          darfmitfahren = false;
-        }
-      });
+      if(this.dataService.angemeldeterUser!=this.fahrt.fahrer){
+        this.fahrt.mitfahrer.forEach(mitfahrer => {
+          if (mitfahrer == this.dataService.angemeldeterUser) {
+            darfmitfahren = false;
+          }
+        });
+      }
 
       if (darfmitfahren) {
         this.fahrt.addMitfahrer(this.dataService.angemeldeterUser);
