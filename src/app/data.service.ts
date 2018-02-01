@@ -59,6 +59,8 @@ export class DataService {
     let p10 = new Person("van Pader","Uli","UliVanPader@paderborn.de","Paderboring",new Date("07.13.1988"),"männlich",new Auto("","","",""));
     let p11 = new Person("Praktikant","Still","StillPraktikant@nojob.de","prakitkant",new Date("08.25.1974"),"männlich",new Auto("","","",""));
     let p12 = new Person("Beutlin","Bilbo","Bilbo@auenland.de","Meisterdieb123",new Date("09.22.1983"),"männlich",new Auto("Kombi","Audi","A3","lila"));
+    let p13 = new Person("Bähr","Steffen","baehr@vgmbh.de","1234",new Date("04.08.1997"),"männlich",new Auto("Kompaktwagen","BMW","1er","grau"));
+    
     p4.id=4; p4.likes=100; p4.dislikes=0;
     p5.id=5; p5.likes=14; p5.dislikes=2;
     p6.id=6; p6.likes=111; p6.dislikes=22;
@@ -68,6 +70,7 @@ export class DataService {
     p10.id=10;
     p11.id=11;
     p12.id=12; p12.likes=185; p12.dislikes=7;
+    p13.id=13;
 
     let f4 = new Fahrt(p4);
     let f5 = new Fahrt(p5);
@@ -119,17 +122,19 @@ export class DataService {
 
     f9.start = "Paderborn";
     f9.ziel = "Auenland";
-    f9.datum=new Date("09.22.2017");
+    f9.datum=new Date("01.19.2018");
     f9.id = 9;
     f9.maxmitfahrer = 3;
     f9.uhrzeit = "14:00"; f9.gepaeck=true;
 
     f10.start = "Auenland";
-    f10.ziel = "Hamburg";
-    f10.datum=new Date("03.03.2018");
+    f10.ziel = "Paderborn";
+    f10.datum=new Date("01.21.2018");
     f10.id = 10;
     f10.maxmitfahrer = 3;
     f10.uhrzeit = "08:30"; f10.gepaeck=true;
+
+    
 
     p4.bieteFahrtAn(f4);
     p5.bieteFahrtAn(f5);
@@ -149,6 +154,12 @@ export class DataService {
     this.users.push(p10);
     this.users.push(p11);
     this.users.push(p12);
+    this.users.push(p13);
+
+    f9.addMitfahrer(p13);
+    p13.mitgefahreneFahrten.push(f9);
+    f10.addMitfahrer(p13);
+    p13.mitgefahreneFahrten.push(f10);
 
     this.updateAngeboteneFahrten();
     console.log(this.angeboteneFahrten);
