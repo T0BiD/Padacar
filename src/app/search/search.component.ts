@@ -48,7 +48,11 @@ public fehlermeldung = "";
   }
 
   onSearch(){
+    this.fahrten = [];
+    this.fehlermeldung = "";
 
+if(this.startort.trim() != "" || this.zielort.trim() != "")
+{
     console.log("Auswahl:");
     console.log("Start:"+this.startort);
     console.log("Ziel:"+this.zielort);
@@ -61,90 +65,23 @@ public fehlermeldung = "";
 
 
 
-this.fahrten = [];
-this.fehlermeldung = "";
+
 
     let alleFahrten = this.data.angeboteneFahrten;
     let fahrtengenau = [];
+    let preisobergrenze = this.preis*1.15;
 
     console.log(alleFahrten);
     for(let f of alleFahrten){
 
 
-      if( (f.start.toLowerCase() == this.startort.toLowerCase()
-      && f.ziel.toLowerCase() == this.zielort.toLowerCase())
+      if( (f.start.toLowerCase().trim() == this.startort.toLowerCase().trim()
+      && f.ziel.toLowerCase().trim() == this.zielort.toLowerCase().trim())
       && f.datum >= new Date(this.datum)){
         if(this.gepaeckstueck=="egal"
         || (this.gepaeckstueck == "ja" && f.gepaeck == true)
         || (this.gepaeckstueck == "nein" && f.gepaeck == false)){
-
-          switch(this.geschlecht){
-            case "egal": fahrtengenau.push(f); break;
-            case "männlich":
-              if( f.fahrer.geschlecht == "männlich"){
-                fahrtengenau.push(f);
-              }
-                 break;
-              case "weiblich":
-              if( f.fahrer.geschlecht == "weiblich"){
-               fahrtengenau.push(f);
-              }
-              break;
-              case "agender":
-              if( f.fahrer.geschlecht == "agender"){
-               fahrtengenau.push(f);
-              }
-              break;
-              case "bigender":
-              if( f.fahrer.geschlecht == "bigender"){
-               fahrtengenau.push(f);
-              }
-              break;
-              case "demigender":
-              if( f.fahrer.geschlecht == "demigender"){
-               fahrtengenau.push(f);
-              }
-              break;
-              case "Enby":
-              if( f.fahrer.geschlecht == "Enby"){
-               fahrtengenau.push(f);
-              }
-              break;
-              case "genderfluid":
-              if( f.fahrer.geschlecht == "genderfluid"){
-               fahrtengenau.push(f);
-              }
-              break;
-              case "Ilyagender":
-              if( f.fahrer.geschlecht == "Ilyagender"){
-               fahrtengenau.push(f);
-              }
-              break;
-              case "Sonstige":
-              if( f.fahrer.geschlecht == "Sonstige"){
-               fahrtengenau.push(f);
-              }
-              break;
-            default:
-          }
-
-        }
-
-      }
-
-
-    }
-    if(fahrtengenau.length==0){
-      for(let f of alleFahrten){
-
-
-        if( (f.start.toLowerCase() == this.startort.toLowerCase()
-        || f.ziel.toLowerCase() == this.zielort.toLowerCase())
-        && f.datum >= new Date(this.datum)){
-
-          if(this.gepaeckstueck=="egal"
-          || (this.gepaeckstueck == "ja" && f.gepaeck == true)
-          || (this.gepaeckstueck == "nein" && f.gepaeck == false)){
+          if(this.preis == null || f.preis <= preisobergrenze){
             switch(this.geschlecht){
               case "egal": fahrtengenau.push(f); break;
               case "männlich":
@@ -196,6 +133,76 @@ this.fehlermeldung = "";
             }
           }
         }
+
+      }
+
+
+    }
+    if(fahrtengenau.length==0){
+      for(let f of alleFahrten){
+
+
+        if( (f.start.toLowerCase().trim() == this.startort.toLowerCase().trim()
+        || f.ziel.toLowerCase().trim() == this.zielort.toLowerCase().trim())
+        && f.datum >= new Date(this.datum)){
+
+          if(this.gepaeckstueck=="egal"
+          || (this.gepaeckstueck == "ja" && f.gepaeck == true)
+          || (this.gepaeckstueck == "nein" && f.gepaeck == false)){
+
+            if(this.preis == null || f.preis <= preisobergrenze){
+              switch(this.geschlecht){
+                case "egal": fahrtengenau.push(f); break;
+                case "männlich":
+                  if( f.fahrer.geschlecht == "männlich"){
+                    fahrtengenau.push(f);
+                  }
+                     break;
+                  case "weiblich":
+                  if( f.fahrer.geschlecht == "weiblich"){
+                   fahrtengenau.push(f);
+                  }
+                  break;
+                  case "agender":
+                  if( f.fahrer.geschlecht == "agender"){
+                   fahrtengenau.push(f);
+                  }
+                  break;
+                  case "bigender":
+                  if( f.fahrer.geschlecht == "bigender"){
+                   fahrtengenau.push(f);
+                  }
+                  break;
+                  case "demigender":
+                  if( f.fahrer.geschlecht == "demigender"){
+                   fahrtengenau.push(f);
+                  }
+                  break;
+                  case "Enby":
+                  if( f.fahrer.geschlecht == "Enby"){
+                   fahrtengenau.push(f);
+                  }
+                  break;
+                  case "genderfluid":
+                  if( f.fahrer.geschlecht == "genderfluid"){
+                   fahrtengenau.push(f);
+                  }
+                  break;
+                  case "Ilyagender":
+                  if( f.fahrer.geschlecht == "Ilyagender"){
+                   fahrtengenau.push(f);
+                  }
+                  break;
+                  case "Sonstige":
+                  if( f.fahrer.geschlecht == "Sonstige"){
+                   fahrtengenau.push(f);
+                  }
+                  break;
+                default:
+              }
+            }
+          }
+        }
       }
     }
 
@@ -205,10 +212,13 @@ this.fehlermeldung = "";
     this.isSearch = true;
     if(this.fahrten.length <= 0)
     {
-      this.fehlermeldung = "Es wurden keine Fahrten gefunden!";
+      this.fehlermeldung = "Unter diesen Suchkriterien wurden keine Fahrten gefunden!";
       this.isSearch = false;
     }
 
   }
-
+  else{
+    this.fehlermeldung = "Start- oder Zielort muss angegeben werden!";
+  }
+}
 }
