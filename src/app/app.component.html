@@ -3,13 +3,13 @@
         <img src="/assets/logo2.png" height="50" width="60">
     </button>
     <span class="spacer"></span>
-    <button *ngIf="!data.angemeldeterUser" (click)="login()" class="buttons">
+    <button *ngIf="!data.angemeldeterUser" mat-raised-button color="primary" class="buttons" (click)="login()">
         Login
     </button>
-    <button *ngIf="!data.angemeldeterUser" (click)="register()" class="buttons">
+    <button mat-raised-button color="primary" class="buttons" *ngIf="!data.angemeldeterUser" (click)="register()">
         Register
     </button>
-    <button [matMenuTriggerFor]="menu" class="buttons" *ngIf="data.angemeldeterUser">
+    <button [matMenuTriggerFor]="menu" mat-raised-button color="primary" class="buttons" *ngIf="data.angemeldeterUser">
         {{data.angemeldeterUser.email}}
     </button>
     <mat-menu #menu="matMenu">

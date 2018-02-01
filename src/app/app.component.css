@@ -40,16 +40,7 @@ mat-toolbar{
 }
 
 .buttons{
-background: darkblue;
-color: white;
-font-size: 15px;
 margin-right: 10px;
-border-color: darkblue;
-}
-.buttons:hover{
-background: white;
-color: darkblue;
-border-color: darkblue;
 }
 
 

@@ -1,5 +1,6 @@
-<div class=parallax align="left">
-    <div id="rectangle">
+<body>
+    <div class=parallax align="left">
+        <div id="rectangle">
 
             <div class="textfield">
                 <br>
@@ -44,8 +45,7 @@
                             <label>Passwort</label>
                         </td>
                         <td>
-                            <input type="password" name="password" id="password" [(ngModel)]="password" required size="30px"
-                            />
+                            <input type="password" name="password" id="password" [(ngModel)]="password" required size="30px" />
                         </td>
                     </tr>
                     <tr>
@@ -53,8 +53,7 @@
                             <label>Passwort wiederholen</label>
                         </td>
                         <td>
-                            <input type="password" name="password2" id="password2" [(ngModel)]="password2" required size="30px"
-                            />
+                            <input type="password" name="password2" id="password2" [(ngModel)]="password2" required size="30px" />
                         </td>
                     </tr>
                     <tr>
@@ -63,7 +62,7 @@
                         </td>
                         <td>
                             <select [(ngModel)]="geschlecht">
-                                <option *ngFor="let g of geschlechter" [value]= "g" required>{{g}}</option>
+                                <option *ngFor="let g of geschlechter" [value]="g" required>{{g}}</option>
                             </select>
                         </td>
                     </tr>
@@ -114,11 +113,10 @@
                 </div>
             </div>
             <div>
-                <button (click)="change()">
-                    Ändern
-                </button>
-                <button (click)="abbrechen()">Abbrechen</button>
+                <button mat-raised-button color="primary" (click)="change()"> Ändern</button>
+                <button mat-raised-button color="primary" (click)="abbrechen()">Abbrechen</button>
             </div>
 
+        </div>
     </div>
-</div>
+</body>
