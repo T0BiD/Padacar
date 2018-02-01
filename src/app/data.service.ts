@@ -138,6 +138,7 @@ export class DataService {
     p8.bieteFahrtAn(f8);
     p12.bieteFahrtAn(f9);
     p12.bieteFahrtAn(f10);
+    
 
     this.users.push(p4);
     this.users.push(p5);

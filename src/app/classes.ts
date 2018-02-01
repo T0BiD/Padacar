@@ -44,6 +44,7 @@ export class Person {
     
     bieteFahrtAn(fahrt: Fahrt) {
         this.angeboteneFahrten.push(fahrt);
+        
 
     }
 
@@ -60,7 +61,7 @@ export class Person {
         });
 
         toRemove.forEach(fahrt => {
-            this.angeboteneFahrten.splice(toRemove.indexOf(fahrt));
+            this.angeboteneFahrten.splice(this.angeboteneFahrten.indexOf(fahrt),1);
         });
         
     }
