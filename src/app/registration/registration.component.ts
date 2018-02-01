@@ -20,18 +20,18 @@ export class RegistrationComponent implements OnInit {
   }
 
 
-  public geschlechter: Array<String> = ['männlich', 'weiblich', 'agender', 'bigender', 'demigender', 'Enby', 'genderfluid', 'Ilyagender', 'Sonstige'];
-  public vorname: String;
-  public nachname: String;
-  public email: String;
-  public password: String;
-  public password2: String;
+  public geschlechter: Array<string> = ['männlich', 'weiblich', 'agender', 'bigender', 'demigender', 'Enby', 'genderfluid', 'Ilyagender', 'Sonstige'];
+  public vorname: string;
+  public nachname: string;
+  public email: string;
+  public password: string;
+  public password2: string;
   public gebDatum: Date;
-  public geschlecht: String;
-  public automodell: String;
-  public autotyp: String;
-  public automarke: String;
-  public autofarbe: String;
+  public geschlecht: string;
+  public automodell: string;
+  public autotyp: string;
+  public automarke: string;
+  public autofarbe: string;
 
   public fehlermeldung = "";
 
@@ -56,6 +56,7 @@ export class RegistrationComponent implements OnInit {
           this.autofarbe));
       newperson.id = this.data.users.length++;
   
+      console.log(newperson);
       this.data.users.push(newperson);
           this.router.navigate(['/home/']);
   
