@@ -79,6 +79,7 @@
 <br />
 <br />
 
+<hr color="darkblue">
 <br />
 <br />
 <div  class="parallax1" *ngIf="isSearch">
@@ -88,7 +89,7 @@
     <mat-card-header>
        <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{f.fahrer.vorname}} {{f.fahrer.name}}</mat-card-title>
-      <mat-card-subtitle>{{f.start}} - {{f.ziel}}</mat-card-subtitle>
+      <mat-card-subtitle class="subtitle">{{f.start}} - {{f.ziel}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <table>

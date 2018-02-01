@@ -3,21 +3,32 @@
         <img src="/assets/logo2.png" height="50" width="60">
     </button>
     <span class="spacer"></span>
-    <button *ngIf="!data.angemeldeterUser" (click)="login()" class="loginbutton">
+    <button *ngIf="!data.angemeldeterUser" (click)="login()" class="buttons">
         Login
     </button>
-    <button *ngIf="!data.angemeldeterUser" (click)="register()" class="loginbutton">
-            Register
+    <button *ngIf="!data.angemeldeterUser" (click)="register()" class="buttons">
+        Register
+    </button>
+
+
+    <button [matMenuTriggerFor]="menu" class="buttons" *ngIf="data.angemeldeterUser">
+        {{data.angemeldeterUser.email}}
+
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="gotoProfile()">
+            <mat-icon>person</mat-icon>
+            <span>Profil</span>
         </button>
-    <button *ngIf="data.angemeldeterUser" (click)="gotoProfile()" class="loginbutton">
-        Profil
-    </button>
-    <button *ngIf="data.angemeldeterUser" (click)="changeProfile()" class="loginbutton">
-        Profil bearbeiten
-    </button>
-    <button *ngIf="data.angemeldeterUser" (click)="logout()" class="loginbutton">
-        Logout
-    </button>
+        <button mat-menu-item (click)="changeProfile()">
+            <mat-icon>build</mat-icon>
+            <span>Profil bearbeiten</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>power_settings_new</mat-icon>
+            <span>Ausloggen</span>
+        </button>
+    </mat-menu>
 </mat-toolbar>
 <hr size="3" color="#2949FF">
 <router-outlet></router-outlet>
