@@ -1,5 +1,5 @@
 mat-toolbar{
-  
+  background: white;
 }
 .test {
   background: rgb(41, 73, 255);
@@ -11,10 +11,53 @@ mat-toolbar{
   background: transparent;
 }
 
-.loginbutton{
+.popuptool{
+  background: white;
+}
 
+.iteminpopuptool{
+  background: darkblue;
+  color: white;
+  font-size: 15px;
+}
+.iteminpopuptool:hover{
+  background: rgb(0, 0, 116);
+  cursor: pointer;
+}
+
+.weißesding{
+  color:darkblue; 
+  font-size:15px;
+  background: white;
+}
+.weißesding:hover{
+  background: rgb(218, 218, 218);
+  cursor: pointer;
 }
 
 .spacer{
   flex: 1 1 auto;
 }
+
+.buttons{
+background: darkblue;
+color: white;
+font-size: 15px;
+margin-right: 10px;
+border-color: darkblue;
+}
+.buttons:hover{
+background: white;
+color: darkblue;
+border-color: darkblue;
+}
+
+
+
+
+
+
+
+
+
+
