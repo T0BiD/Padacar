@@ -28,7 +28,10 @@ export class Person {
         this.auto = auto;
         this.dislikes = 0;
         this.likes = 0;
-        this.alter = ((new Date().valueOf() - new Date(geburtsdatum).valueOf())/31536000000);
+        let altertemp = ((new Date().valueOf() - new Date(geburtsdatum).valueOf())/31536000000);
+        let alterString = altertemp.toString().split(".");
+        this.alter = Number.parseInt(alterString[0]);
+        
         //Hier die gespeicherten fahrten laden statt leeres array erstellen, nur für testzwecke
         this.angeboteneFahrten = new Array<Fahrt>();
         this.gefahreneFahrten = new Array<Fahrt>();
@@ -41,10 +44,10 @@ export class Person {
         this.auto = auto;
     }
 
-    
+
     bieteFahrtAn(fahrt: Fahrt) {
         this.angeboteneFahrten.push(fahrt);
-        
+
 
     }
 
@@ -63,7 +66,7 @@ export class Person {
         toRemove.forEach(fahrt => {
             this.angeboteneFahrten.splice(this.angeboteneFahrten.indexOf(fahrt),1);
         });
-        
+
     }
 
 
