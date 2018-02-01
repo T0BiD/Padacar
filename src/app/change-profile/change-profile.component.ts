@@ -25,9 +25,8 @@ export class ChangeProfileComponent implements OnInit {
     this.vorname = this.user.vorname;
     this.nachname = this.user.name;
     this.email = this.user.email;
-    this.password = this.user.password;
-    this.password2 = this.user.password;
-    this.gebDatum = this.user.geburtsdatum;
+    this.password = "";
+    this.password2 = "";
     this.geschlecht = this.user.geschlecht;
     this.automodell = this.user.auto.modell;
     this.autotyp = this.user.auto.typ;
@@ -39,25 +38,24 @@ export class ChangeProfileComponent implements OnInit {
   }
 
 
-  public geschlechter: Array<String> = ['männlich', 'weiblich', 'agender', 'bigender', 'demigender', 'Enby', 'genderfluid', 'Ilyagender', 'Sonstige'];
-  public vorname: String;
-  public nachname: String;
-  public email: String;
-  public password: String;
-  public password2: String;
-  public gebDatum: Date;
-  public geschlecht: String;
-  public automodell: String;
-  public autotyp: String;
-  public automarke: String;
-  public autofarbe: String;
+  public geschlechter: Array<string> = ['männlich', 'weiblich', 'agender', 'bigender', 'demigender', 'Enby', 'genderfluid', 'Ilyagender', 'Sonstige'];
+  public vorname: string;
+  public nachname: string;
+  public email: string;
+  public password: string;
+  public password2: string;
+  public geschlecht: string;
+  public automodell: string;
+  public autotyp: string;
+  public automarke: string;
+  public autofarbe: string;
 
   public user: Person;
   public fehlermeldung = "";
   public id = 0;
 
   public change() {
-    console.log(this.nachname, this.vorname, this.email, this.password, this.gebDatum, this.geschlecht, new Auto("", "", "", ""));
+    console.log(this.nachname, this.vorname, this.email, this.password, this.geschlecht, new Auto("", "", "", ""));
 
     this.fehlermeldung = "";
 
@@ -69,7 +67,6 @@ export class ChangeProfileComponent implements OnInit {
       this.user.email = this.email;
       this.user.password = this.password ;
 
-      this.user.geburtsdatum = this.gebDatum;
       this.user.geschlecht = this.geschlecht;
       this.user.auto.modell = this.automodell;
       this.user.auto.typ = this.autotyp;
