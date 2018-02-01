@@ -50,7 +50,7 @@ export class CreateRideComponent implements OnInit {
       neueFahrt.fahrer = this.dataService.angemeldeterUser;
       this.person = this.dataService.angemeldeterUser;
       neueFahrt = new Fahrt(this.person);
-      neueFahrt.id = this.dataService.angeboteneFahrten.length++;
+      neueFahrt.id = this.dataService.angeboteneFahrten.length + this.dataService.vergangenenFahrten.length+1;
       neueFahrt.start = this.startort;
       neueFahrt.ziel = this.zielort;
       neueFahrt.datum = this.datum;
