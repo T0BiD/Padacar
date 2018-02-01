@@ -79,6 +79,7 @@ export class CreateRideComponent implements OnInit {
         this.person.updateFahrten();
         this.dataService.updateAngeboteneFahrten();
         console.info(this.person.angeboteneFahrten);
+        this.zusätzlicheFahrtenErstellen();
         this.router.navigate(['/fahrt/'+neueFahrt.id]);
       } else {
         console.log("Kein Datum aus der Vergangenheit.");
@@ -115,21 +116,44 @@ export class CreateRideComponent implements OnInit {
   //Methode um den "regelmäßig" Parameter auszulesen und ggf. weitere fahreten zu erstellen
   private zusätzlicheFahrtenErstellen() {
     if (this.neueFahrt.regelmaessig == "wöchentlich") {
-      for (var i: number = 0; i <= 52; i++) {
-        this.neueFahrt.datum.setDate(this.neueFahrt.datum.getDate() + parseInt("7"));
-        this.person.bieteFahrtAn(this.neueFahrt);
-        console.log("Datum:" + this.neueFahrt.datum);
+      for (let i = 0; i <= 52; i++) {
+        let nF = new Fahrt(this.dataService.angemeldeterUser);
+        nF.datum = new Date(this.neueFahrt.datum.valueOf()+7*(1+i)*1000*60*60*24);
+        nF.gepaeck = this.neueFahrt.gepaeck;
+        nF.id = this.dataService.angeboteneFahrten.length + this.dataService.vergangenenFahrten.length+2+i;
+        nF.maxmitfahrer = this.neueFahrt.maxmitfahrer;
+        nF.preis = this.neueFahrt.preis;
+        nF.regelmaessig = this.neueFahrt.regelmaessig;
+        nF.start = this.neueFahrt.start;
+        nF.ziel = this.neueFahrt.ziel;
+        nF.uhrzeit = this.neueFahrt.uhrzeit;
+
+        this.person.bieteFahrtAn(nF);
+        console.log("Datum:" + nF.datum);
       }
     }
     else if (this.neueFahrt.regelmaessig == "täglich") {
       for (var i: number = 0; i <= 365; i++) {
-        this.neueFahrt.datum.setDate(this.neueFahrt.datum.getDate() + parseInt("1"));
+        let nF = new Fahrt(this.dataService.angemeldeterUser);
+        nF.datum = new Date(this.neueFahrt.datum.valueOf()+(1+i)*1000*60*60*24);
+        
+        nF.gepaeck = this.neueFahrt.gepaeck;
+        nF.id = this.dataService.angeboteneFahrten.length + this.dataService.vergangenenFahrten.length+2+i;
+        nF.maxmitfahrer = this.neueFahrt.maxmitfahrer;
+        nF.preis = this.neueFahrt.preis;
+        nF.regelmaessig = this.neueFahrt.regelmaessig;
+        nF.start = this.neueFahrt.start;
+        nF.ziel = this.neueFahrt.ziel;
+        nF.uhrzeit = this.neueFahrt.uhrzeit;
+
+        this.person.bieteFahrtAn(nF);
         console.log("Datum:" + this.neueFahrt.datum);
       }
     }
     else {
       console.info("Keine regelmäßigen Fahrten erstellt");
     }
+    this.dataService.updateAngeboteneFahrten();
   }
 
 }
