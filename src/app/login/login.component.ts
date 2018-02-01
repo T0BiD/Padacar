@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.data.users.forEach(user => {
       console.log(user.name);
       
-      if (user.email == this.email && user.password == this.password) {
+      if (user.email.toLowerCase() == this.email.toLowerCase() && user.password == this.password) {
         console.log("passt");
         this.data.angemeldeterUser = user;
         this.dialogRef.close();
