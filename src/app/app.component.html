@@ -9,7 +9,6 @@
     <button *ngIf="!data.angemeldeterUser" (click)="register()" class="buttons">
         Register
     </button>
-
     <button [matMenuTriggerFor]="menu" class="buttons" *ngIf="data.angemeldeterUser">
         {{data.angemeldeterUser.email}}
     </button>
@@ -18,7 +17,9 @@
             <mat-icon>person</mat-icon>
             <span>Profil</span>
         </button>
-        <button mat-menu-item (click)="gotoProfile()">
+
+        <button mat-menu-item (click)="changeProfile()">
+
             <mat-icon>build</mat-icon>
             <span>Profil bearbeiten</span>
         </button>
