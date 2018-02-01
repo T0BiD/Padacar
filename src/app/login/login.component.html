@@ -1,22 +1,35 @@
-<h1>Login</h1>
-<table>
-  <tr>
-    <td>
-      <mat-input-container>
-        <input matInput [(ngModel)]="email" placeholder="E-Mail">
-      </mat-input-container>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <mat-input-container>
-        <input matInput [(ngModel)]="password" placeholder="Password" type="password">
-      </mat-input-container>
-    </td>
-  </tr>
-</table>
-<button mat-raised-button (click)="login()">Login</button>
-
-<!--<li *ngIf="animal">
-    You chose: <i>{{animal}}</i>
-  </li>-->
+<body>
+  <div id="rectangle">
+      <h1 align="center">Login</h1>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div style="margin-bottom: 100px">
+    <img class="loginImage" src="/assets/logo2.png">
+  </div>
+  <div class="loginzeug" align="right">
+    <table>
+      <tr>
+        <td>
+          <br>
+          <br>
+          <mat-input-container>
+            <input matInput [(ngModel)]="email" placeholder="E-Mail">
+          </mat-input-container>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <br>
+          <mat-input-container>
+            <input matInput [(ngModel)]="password" placeholder="Password" type="password">
+          </mat-input-container>
+        </td>
+      </tr>
+    </table>
+    <div style="margin-left: 50px;" align="center">
+      <button mat-raised-button (click)="login()">Login</button>
+    </div>
+  </div>
+</body>
