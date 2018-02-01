@@ -162,7 +162,7 @@ export class Auto {
     constructor(typ, marke,modell, farbe){
         this.typ = typ;
         this.marke = marke;
-        this.farbe = modell;
-        this.modell = farbe;
+        this.farbe = farbe;
+        this.modell = modell;
     }
 }
